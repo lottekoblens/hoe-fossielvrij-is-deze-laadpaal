@@ -4,20 +4,12 @@ const http = require("http");
 const Xray = require("x-ray");
 const fetch = require('node-fetch');
 const PORT = process.env.PORT || 5151;
-const mapboxgl = require('mapbox-gl');
 
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-    // mapboxgl.accessToken = 'pk.eyJ1IjoibG90dGVrb2JsZW5zIiwiYSI6ImNsM2s3NjFxMTBjdXUza3F3c2YyZmxuYzgifQ.b4kWvzUQyOmgaSuho3hTFQ';
-    // const map = new mapboxgl.Map({
-    //     container: 'map', // container ID
-    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
-    //     center: [-74.5, 40], // starting position [lng, lat]
-    //     zoom: 9 // starting zoom
-    // });
     res.render('home');
 });
 
