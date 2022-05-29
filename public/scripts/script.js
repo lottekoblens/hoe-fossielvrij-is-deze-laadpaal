@@ -83,7 +83,14 @@ socket.on('show-charge-points', data => {
         console.log('hoi')
 
         // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el).setLngLat(element.geometry.coordinates).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(element.geometry.coordinates).setPopup(
+            new mapboxgl.Popup({
+                offset: 25
+            }) // add popups
+            .setHTML(
+                `<h3>${element.properties.title}</h3><p>${element.properties.description}</p>`
+            )
+        ).addTo(map);
     });
 
 })
