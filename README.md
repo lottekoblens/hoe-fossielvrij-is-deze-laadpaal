@@ -40,7 +40,7 @@ Open the terminal, or use the terminal in your IDE
 
 1. Clone the repository
 
-``` git clone https://github.com/KoenHaagsma/TechTrack-Frontend-Applications.git ```
+``` git clone https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal.git ```
 
 2. Go to the cloned repository
 
