@@ -5,7 +5,7 @@
 - [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
   - [:heavy_plus_sign: Table of contents](#heavy_plus_sign-table-of-contents)
   - [:memo: Description](#memo-description)
-  - [:construction_worker: Opdrachtgever](#construction_worker-opdrachtgever)
+  - [:construction_worker: Client](#construction_worker-client)
   - [:rocket: Design challenge](#rocket-design-challenge)
   - [:package: Data](#package-data)
   - [🔍 Getting started](#-getting-started)
@@ -18,7 +18,7 @@ from where, when and of course how much energy (kWh) you charge. So how do you k
 
 The Green Caravan has developed a data model that combines energy generation and trade across Europe with energy mixes from energy providers. For example, you can accurately request how much CO2, solar, wind, hydro, nuclear, coal, gas and more is in a charging session right down to the charging station. Green Caravan not only has historical data, but also forecasts for the near future.
 
-## :construction_worker: Opdrachtgever
+## :construction_worker: Client
 Green Caravan  
 Product Owners: Tom Visser & Victor Zumpolle
 
