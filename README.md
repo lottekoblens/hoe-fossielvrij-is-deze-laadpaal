@@ -40,23 +40,19 @@ Open the terminal, or use the terminal in your IDE
 
 1. Clone the repository
 
-``` git clone https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal.git ```
+   ``` git clone https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal.git ```
 
-2. Go to the cloned repository
+2. Install all packages
 
-cd ../../Techtrack-Frontend-Applications
+   npm install || npm i
 
-3. Install all packages
+3. Start the application for development
 
-npm install || npm i
+   npm run dev
 
-4. Start the application for development
+4. Open de server and go to the browser: localhost 
 
-npm run dev
-
-5. Open de server and go to the browser: Localhost. 
-
-If this doesn't work change your port to another port
+   If this doesn't work change your port to another one
 
 ## :bookmark: Licentie
 
