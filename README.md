@@ -1,14 +1,18 @@
 # :seedling: How fossil-free is this charging station?
 
-## :heavy_plus_sign: Table of contents
-  * [Beschrijving](#beschrijving)
-  * [Opdrachtgever](#opdrachtgever)
-  * [Design challenge](#design-challenge)
-  * [Data](#data)
-  * [Planning](#planning)
-  * [Licentie](#licentie)
 
-## :memo: Beschrijving
+## :heavy_plus_sign: Table of contents
+- [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
+  - [:heavy_plus_sign: Table of contents](#heavy_plus_sign-table-of-contents)
+  - [:memo: Description](#memo-description)
+  - [:construction_worker: Opdrachtgever](#construction_worker-opdrachtgever)
+  - [:rocket: Design challenge](#rocket-design-challenge)
+  - [:package: Data](#package-data)
+  - [🔍 Getting started](#-getting-started)
+    - [🔨 Installation](#-installation)
+  - [:bookmark: Licentie](#bookmark-licentie)
+
+## :memo: Description
 The Netherlands is rapidly switching to electric driving. But electricity is not yet fossil-free. And when you charge your electric car, you emit CO2. How much CO2 is released depends on
 from where, when and of course how much energy (kWh) you charge. So how do you know how much CO2 is released when you plug your electric car into a specific charging station?
 
