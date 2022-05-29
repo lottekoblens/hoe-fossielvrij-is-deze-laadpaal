@@ -8,7 +8,7 @@ const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [-74.5, 40], // starting position [lng, lat]
-    zoom: 12, // starting zoom
+    zoom: 14, // starting zoom
     center: [4.899431, 52.379189]
 });
 
@@ -80,7 +80,6 @@ socket.on('show-charge-points', data => {
         // create a HTML element for each feature
         const el = document.createElement('div');
         el.className = 'marker';
-        console.log('hoi')
 
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el).setLngLat(element.geometry.coordinates).setPopup(

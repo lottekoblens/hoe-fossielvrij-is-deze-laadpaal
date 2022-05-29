@@ -59,3 +59,9 @@ header h1 {
     text-align: center;
     color: black;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

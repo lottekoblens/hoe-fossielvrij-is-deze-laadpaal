@@ -1,6 +1,6 @@
-# Hoe fossielvrij is deze laadpaal?
+# ⚙ Hoe fossielvrij is deze laadpaal?
 
-![Green Caravan](https://github.com/cmda-minor-web-cases/hoe-fossielvrij-is-deze-laadpaal/blob/main/assets/green-caravan.png?raw=true)
+Insert picture/gif of full project UI
 
 ## Inhoudsopgave
   * [Beschrijving](#beschrijving)
@@ -23,24 +23,6 @@ Product Owners: Tom Visser & Victor Zumpolle
 ## Design challenge
 Ontwerp en ontwikkel een web applicatie die inzicht geeft in het gebruik van fossiele brandstoffen voor laadsessies van elektrische auto's
 
-### User story
-**1. Fossiele elektriciteit uit laadpaal?**
-
-Als elektrisch rijder,
-wil ik weten hoeveel fossiele elektriciteit er uit de laadpaal komt waar ik naast sta, zodat ik weet hoe (on)duurzaam dat is.
-
-Kunnen we deze data inzichtelijk maken en bijvoorbeeld via een QR-code op de laadpaal tonen?
-
-**2 Beste laadpaal vinden**
-
-Als elektrisch rijder,
-wil ik graag weten bij welke laadpaal ik het meest duurzaam kan laden, zodat ik mijn auto zo duurzaam mogelijk oplaadt.
-
-**3 Beste laadmoment bij laadpaal vinden**
-
-Als elektrisch rijder,
-wil ik graag weten op welk moment er het minste fossiele elektriciteit uit mijn laadpaal komt, zodat ik mijn auto zo duurzaam mogelijk oplaadt.
-
 ## Data
 Green Caravan beschikt over meerdere datamodellen:  
 * Exacte energie-mix van elektriciteit in Nederland, en bijbehorende CO2-emissies, tot op het uur nauwkeurig. Zowel historische data als voorspelling tot 48u in de toekomst.
@@ -48,6 +30,32 @@ Green Caravan beschikt over meerdere datamodellen:
 
 Deze time series data (en de laadsessies van de gebruikers) worden bijgehouden in een InfluxDB database. Deze heeft een eigen API en (JS) SDK en zal tijdens de meesterproef voor jullie beschikbaar gesteld worden. Door per laadpaal de informatie van de bijbehorende energie-provider te combineren met de data over de energie-mix kun je de exacte CO2-footprint van een laadsessie bij die laadpaal op
 dat moment berekenen. We dagen je uit dit te realiseren en voor de gebruiker inzichtelijk te maken.
+
+## 🔍 Getting started
+Before you can start you need to follow the installation
+
+### 🔨 Installation
+Open the terminal, or use the terminal in your IDE
+
+1. Clone the repository
+
+``` git clone https://github.com/KoenHaagsma/TechTrack-Frontend-Applications.git ```
+
+2. Go to the cloned repository
+
+cd ../../Techtrack-Frontend-Applications
+
+3. Install all packages
+
+npm install || npm i
+
+4. Start the application for development
+
+npm run dev
+
+5. Open de server and go to the browser: Localhost. 
+
+If this doesn't work change your port to another port
 
 ## Licentie
 
