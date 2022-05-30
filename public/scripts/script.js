@@ -59,6 +59,7 @@ let geojson = {
 };
 
 socket.on('show-charge-points', data => {
+    console.log(data)
     data.forEach(data => {
         let dataForMap = {
             type: data.markerType,
@@ -68,12 +69,13 @@ socket.on('show-charge-points', data => {
             },
             properties: {
                 title: 'Laadpunt',
-                description: 'Dit is een laadpunt'
+                description: 'Provider: ' + data.operatorName
             }
         };
         geojson.features.push(dataForMap)
     })
     console.log(geojson)
+
 
     // add markers to map
     geojson.features.forEach(element => {

@@ -44,8 +44,8 @@ header h1 {
 .marker {
     background-image: url('/images/mapbox-icon.png');
     background-size: cover;
-    width: 2vw;
-    height: 2vw;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
     cursor: pointer;
 }
