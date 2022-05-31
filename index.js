@@ -14,38 +14,12 @@ const InfluxDatabase = require('@influxdata/influxdb-client');
 const InfluxDB = InfluxDatabase.InfluxDB;
 const INFLUXDB_URL = 'https://gc-acc.antst.net';
 const INFLUXDB_ORG = 'grca';
-const INFLUXDB_KEY = 'QvDOolmSU478M5YkeD17nVeFb4FA_ngo-P0LNokCe6dS2Y10hxIa1zoQ1ZZ9RipKIds-TO7at1-Wgh7Qi44gAQ==';
+const INFLUXDB_KEY = process.env.INFLUXDB_KEY;
 const client = new InfluxDB({
     url: INFLUXDB_URL,
     token: INFLUXDB_KEY
 });
 const queryApi = client.getQueryApi(INFLUXDB_ORG);
-
-const groupBy = (items, prop) => {
-    return items.reduce((out, item) => {
-        const value = item[prop];
-        out[value] = out[value] || [];
-        out[value].push(item);
-        return out;
-    }, {});
-};
-
-async function getData() {
-    const query = `
-    from(bucket: "providers")
-      |> range(start: -28h, stop: -24h)
-      |> filter(fn: (r) => r["_measurement"] == "past_providers")
-    `;
-    try {
-        const rows = await queryApi.collectRows(query);
-        const data = Object.entries(groupBy(rows, "_field"));
-        return data;
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
-}
-
 
 app.set('view engine', 'ejs');
 
@@ -59,9 +33,44 @@ app.use((req, res) => {
     res.status(404).send('Sorry, deze pagina kon ik niet vinden.');
 });
 
+const groupBy = (items, prop) => {
+    return items.reduce((out, item) => {
+        const value = item[prop];
+        if (prop == 'operatorName') {
+            out[value] = out[value] || [];
+            out[value].push(item);
+        } else {
+            out[value] = item;
+        }
+        return out;
+    }, {});
+}
+
+async function getData() {
+    const query = `from(bucket: "providers")
+    |> range(start: -28h, stop: -27h)
+    |> filter(fn: (r) => r["_measurement"] == "past_providers")`;
+
+    try {
+        const rows = await queryApi.collectRows(query);
+        const data = groupBy(rows, "_field");
+        // console.log(data)
+        return data;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 io.on('connection', (socket) => {
-    socket.on('location', (coordinations) => {
+    socket.on('location', async (coordinations) => {
         getChargingStations(coordinations);
+
+        const energySuppliers = await getData();
+        const sortedEnergySuppliers = Object.entries(energySuppliers)
+            .sort(([, a], [, b]) => a._value - b._value)
+            .map(supplier => [supplier[0], supplier[1]._value]);
+        console.log(sortedEnergySuppliers)
     });
 });
 
@@ -91,10 +100,6 @@ async function getChargingStations(coordinations) {
         .then(res => res.json())
         .then(data => dataStations = data)
         .catch(err => console.log(err))
-
-    // const availableStations = dataStations.filter(data => {
-    //     return data.status == 'Available'
-    // });
 
     io.emit('show-charge-points', dataStations)
 }

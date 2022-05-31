@@ -12,6 +12,8 @@ const map = new mapboxgl.Map({
     center: [4.899431, 52.379189]
 });
 
+
+
 const getUserLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
