@@ -1,5 +1,5 @@
 const socket = io();
-const div = document.querySelector('#error');
+const errorMessage = document.querySelector('#error');
 let dataMap
 
 mapboxgl.accessToken =
@@ -16,7 +16,7 @@ const getUserLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
     } else {
-        div.innerHTML = 'The browser does not support geolocation';
+        errorMessage.innerHTML = 'The browser does not support geolocation';
     }
 }
 
@@ -37,7 +37,7 @@ const userPosition = location => {
 
 const ErrorPermissionDenied = error => {
     if (error.PERMISSION_DENIED) {
-        div.innerHTML = 'The user has denied the request for Geolocation.';
+        errorMessage.innerHTML = 'The user has denied the request for Geolocation.';
     }
 }
 getUserLocation();
@@ -52,7 +52,8 @@ let geojson = {
         },
         properties: {
             title: 'Mapbox',
-            description: 'Washington, D.C.'
+            description: 'Washington, D.C.',
+            iconSize: [40, 40]
         }
     }],
 
@@ -69,13 +70,48 @@ socket.on('show-charge-points', data => {
             },
             properties: {
                 title: 'Laadpunt',
-                description: 'Provider: ' + data.operatorName
+                description: 'Provider: ' + data.operatorName + '  Beschikbaarheid: ' + data.status,
+                iconSize: [40, 40]
             }
         };
         geojson.features.push(dataForMap)
     })
     console.log(geojson)
 
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: true,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true
+        })
+    );
+
+
+    // // Add markers to the map.
+    // for (const marker of geojson.features) {
+    //     // Create a DOM element for each marker.
+    //     const el = document.createElement('div');
+    //     const width = marker.properties.iconSize[0];
+    //     const height = marker.properties.iconSize[1];
+    //     el.className = 'marker';
+    //     el.style.backgroundImage = `url(https://placekitten.com/g/${width}/${height}/)`;
+    //     el.style.width = `${width}px`;
+    //     el.style.height = `${height}px`;
+    //     el.style.backgroundSize = '100%';
+
+    //     el.addEventListener('click', () => {
+    //         window.alert(marker.properties.message);
+    //     });
+
+    //     // Add markers to the map.
+    //     new mapboxgl.Marker(el)
+    //         .setLngLat(marker.geometry.coordinates)
+    //         .addTo(map);
+    // }
 
     // add markers to map
     geojson.features.forEach(element => {

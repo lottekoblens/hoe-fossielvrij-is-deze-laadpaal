@@ -84,7 +84,7 @@ async function getChargingStations(coordinations) {
     const latitude = coordinations.latitude;
     const longitude = coordinations.longitude;
 
-    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.03}/${longitude + 0.03}/${latitude - 0.03}/${latitude + 0.03}/15`;
+    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.02}/${longitude + 0.02}/${latitude - 0.02}/${latitude + 0.02}/15`;
     let dataStations = null;
 
     await fetch(url)
@@ -92,11 +92,11 @@ async function getChargingStations(coordinations) {
         .then(data => dataStations = data)
         .catch(err => console.log(err))
 
-    const availableStations = dataStations.filter(data => {
-        return data.status == 'Available'
-    });
+    // const availableStations = dataStations.filter(data => {
+    //     return data.status == 'Available'
+    // });
 
-    io.emit('show-charge-points', availableStations)
+    io.emit('show-charge-points', dataStations)
 }
 
 server.listen(PORT, () => {
