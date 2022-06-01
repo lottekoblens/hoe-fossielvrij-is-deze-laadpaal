@@ -1,6 +1,18 @@
 const socket = io();
-const errorMessage = document.querySelector('#error');
+const errorMessage = document.getElementById('#error');
+const infoButton = document.getElementById('info-button');
+const infoSection = document.getElementById('info');
+const closeButton = document.getElementById('close-button');
+const loading = document.getElementById('loading');
 let dataMap
+
+infoButton.addEventListener('click', () => {
+    infoSection.style.display = 'block';
+})
+
+closeButton.addEventListener('click', () => {
+    infoSection.style.display = 'none';
+})
 
 mapboxgl.accessToken =
     'pk.eyJ1IjoibG90dGVrb2JsZW5zIiwiYSI6ImNsM2s3MmtydjAwM2szY3A1ODJycHZycHUifQ.0bLXdbWjqYSzKUjW0r1rLw';
@@ -8,11 +20,9 @@ const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [-74.5, 40], // starting position [lng, lat]
-    zoom: 16, // starting zoom
+    zoom: 15, // starting zoom
     center: [4.899431, 52.379189]
 });
-
-
 
 const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -89,7 +99,8 @@ socket.on('show-charge-points', data => {
             trackUserLocation: true,
             // Draw an arrow next to the location dot to indicate which direction the device is heading.
             showUserHeading: true
-        })
+        }),
+        'bottom-right'
     );
 
 
@@ -130,6 +141,27 @@ socket.on('show-charge-points', data => {
                 `<h3>${element.properties.title}</h3><p>${element.properties.description}</p>`
             )
         ).addTo(map);
+        loading.style.display = 'none';
     });
+})
 
+const geocoder = new MapboxGeocoder({
+    // Initialize the geocoder
+    accessToken: mapboxgl.accessToken, // Set the access token
+    mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    marker: true // Do not use the default marker style
+});
+
+// Add the geocoder to the map
+map.addControl(geocoder);
+geocoder.on('result', (e) => {
+
+    const longitude = e.result.center[0];
+    const latitude = e.result.center[1];
+    console.log(latitude)
+
+    socket.emit('location', {
+        latitude,
+        longitude
+    })
 })

@@ -1,3 +1,9 @@
+:root {
+    --background-color: #080D55;
+    --secondary-color: #02958A;
+    --border-radius: 0.2em;
+}
+
 @font-face {
     font-family: 'Roboto-Thin';
     src: url('/font/Roboto-Thin.ttf');
@@ -9,8 +15,8 @@
 }
 
 body {
-    background: #08553e;
-    color: black;
+    background: var(--background-color);
+    color: white;
     margin: 0;
     padding: 0;
     font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
@@ -60,13 +66,128 @@ header h1 {
     color: black;
 }
 
-.mapboxgl-ctrl-top-right {
-    top: 90% !important;
-    right: 0;
+.mapboxgl-ctrl-group button {
+    width: 13vw !important;
+    height: 7vh !important;
 }
 
-footer {
+.mapboxgl-ctrl-attrib.mapboxgl-compact {
+    display: none;
+}
+
+.mapboxgl-ctrl button .mapboxgl-ctrl-icon::before {
+    content: 'Eigen locatie';
+    display: block;
+}
+
+.mapboxgl-ctrl button .mapboxgl-ctrl-icon {
+    width: 100%;
+    height: 140% !important;
+    padding: 0.1em;
+}
+
+#info-button {
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 0;
-    right: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    background: white;
+    text-align: center;
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#info {
+    display: none;
+    width: 80vw;
+    height: 70vh;
+    background: var(--background-color);
+    margin: 6.5em auto 1.5em auto;
+    padding: 0.5em;
+    border-radius: var(--border-radius);
+}
+
+#info h2 {
+    margin: 0.2em;
+}
+
+#info-button:active {
+    background: #a8cdc2;
+}
+
+#info button {
+    position: absolute;
+    top: 28.5vmin;
+    right: 11vw;
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: var(--border-radius);
+}
+
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib-inner {
+    display: none !important;
+}
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 45vh;
+    left: 40vw;
+    font-size: 2em;
+}
+
+#loading-ring {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+}
+
+#loading-ring:after {
+    content: ' ';
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+    border-radius: 50%;
+    border: 0.2em solid #d9574e;
+    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    animation: loading-ring 1.2s linear infinite;
+}
+
+@keyframes loading-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
+    top: 10px;
+}
+
+.mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+}
+
+.mapboxgl-ctrl-geocoder .mapboxgl-ctrl {
+    background: rgba(255, 255, 255, 0.5);
 }

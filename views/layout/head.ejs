@@ -10,13 +10,20 @@
     <script defer src="/socket.io/socket.io.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
     <script defer src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-
+    <script defer src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'>
+    </script>
+    <link rel='stylesheet'
+        href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
+        type='text/css' />
     <script defer src="/scripts/script.js"></script>
     <title>Sustainable Charging</title>
 </head>
 
 <body>
     <header>
-        <img src="/images/favicon.ico" alt="">
-        <h1>Sustainable Charging</h1>
+        <!-- <img src="/images/favicon.ico" alt="">
+        <h1>Sustainable Charging</h1> -->
+        <div id="loading">
+            <div id="loading-ring"></div>
+        </div>
     </header>
