@@ -19,7 +19,6 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
-    center: [-74.5, 40], // starting position [lng, lat]
     zoom: 15, // starting zoom
     center: [4.899431, 52.379189]
 });
@@ -83,12 +82,24 @@ socket.on('show-charge-points', data => {
             properties: {
                 title: 'Laadpunt',
                 description: 'Provider: ' + data.operatorName + '  Beschikbaarheid: ' + data.status,
-                iconSize: [40, 40]
+                operator: data.operatorName,
+                sustainability: 'good'
             }
         };
         geojson.features.push(dataForMap)
     })
-    console.log(geojson)
+    console.log(geojson, 'geojson')
+
+
+    const iets = () => {
+        console.log('test')
+        for (i = 0; i < geojson.features.length; i++) {
+            let test = geojson.features[i].properties.operator
+            console.log(test)
+        }
+    }
+
+    iets()
 
     // // Add markers to the map.
     // for (const marker of geojson.features) {
@@ -135,7 +146,13 @@ const geocoder = new MapboxGeocoder({
     // Initialize the geocoder
     accessToken: mapboxgl.accessToken, // Set the access token
     mapboxgl: mapboxgl, // Set the mapbox-gl instance
-    marker: true // Do not use the default marker style
+    marker: true, // Do not use the default marker style
+    flyTo: {
+        zoom: 14, // If you want your result not to go further than a specific zoom
+    },
+    marker: {
+        color: 'orange'
+    }
 });
 
 // Add the geocoder to the map

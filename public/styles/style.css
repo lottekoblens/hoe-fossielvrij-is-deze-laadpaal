@@ -70,6 +70,7 @@ header h1 {
 
 .mapboxgl-popup-close-button {
     color: white;
+    font-size: 1em;
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
@@ -136,7 +137,7 @@ header h1 {
 #info button {
     position: absolute;
     top: 28.5vmin;
-    right: 11vw;
+    right: 10.4vw;
     background: white;
     color: black;
     border: none;

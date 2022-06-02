@@ -93,6 +93,31 @@ async function getChargingStations(coordinations) {
     await fetch(url)
         .then(res => res.json())
         .then(data => dataStations = data)
+        .then(data => data.map(data => {
+            let operatorName = data.operatorName;
+            if (operatorName == 'PitPoint') {
+                data.operatorName = 'TotalGasPower';
+            } else if (operatorName == 'Allego') {
+                data.operatorName = 'Vattenfall';
+            } else if (operatorName == 'Community by Shell Recharge') {
+                data.operatorName = 'EnergieDirect';
+            } else if (operatorName == 'EV-Box') {
+                data.operatorName = 'Engie';
+            } else if (operatorName == 'Alfen') {
+                data.operatorName = 'Vandebron';
+            } else if (operatorName == 'E-Flux') {
+                data.operatorName = 'BudgetEnergie';
+            } else if (operatorName == 'LastMileSolutions') {
+                data.operatorName = 'Engie';
+            } else if (operatorName == 'Fastned') {
+                data.operatorName = 'GreenChoice';
+            } else if (operatorName == 'BlueMarble Charging') {
+                data.operatorName = 'Sepa';
+            } else if (operatorName == 'Shell Regarge') {
+                data.operatorName = 'EnergieDirect';
+            }
+            return data;
+        }))
         .catch(err => console.log(err))
 
     const energySuppliers = await getData();
