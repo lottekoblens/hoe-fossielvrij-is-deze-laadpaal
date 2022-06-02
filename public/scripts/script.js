@@ -90,20 +90,6 @@ socket.on('show-charge-points', data => {
     })
     console.log(geojson)
 
-    map.addControl(
-        new mapboxgl.GeolocateControl({
-            positionOptions: {
-                enableHighAccuracy: true
-            },
-            // When active the map will receive updates to the device's location as it changes.
-            trackUserLocation: true,
-            // Draw an arrow next to the location dot to indicate which direction the device is heading.
-            showUserHeading: true
-        }),
-        'bottom-right'
-    );
-
-
     // // Add markers to the map.
     // for (const marker of geojson.features) {
     //     // Create a DOM element for each marker.
@@ -165,3 +151,16 @@ geocoder.on('result', (e) => {
         longitude
     })
 })
+
+map.addControl(
+    new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true
+    }),
+    'bottom-right'
+);

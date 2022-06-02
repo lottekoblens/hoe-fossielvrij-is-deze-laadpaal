@@ -65,6 +65,7 @@ header h1 {
     text-align: center;
     color: white;
     background: var(--background-color) !important;
+    font-size: 1.4em !important;
 }
 
 .mapboxgl-popup-close-button {

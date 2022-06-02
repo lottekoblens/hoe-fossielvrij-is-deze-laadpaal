@@ -65,13 +65,7 @@ async function getData() {
 io.on('connection', (socket) => {
     socket.on('location', async (coordinations) => {
         getChargingStations(coordinations);
-
-        const energySuppliers = await getData();
-        const sortedEnergySuppliers = Object.entries(energySuppliers)
-            .sort(([, a], [, b]) => a._value - b._value)
-            .map(supplier => [supplier[0], supplier[1]._value]);
-        console.log(sortedEnergySuppliers)
-    });
+    })
 });
 
 // async function getDataEV() {
@@ -101,6 +95,11 @@ async function getChargingStations(coordinations) {
         .then(data => dataStations = data)
         .catch(err => console.log(err))
 
+    const energySuppliers = await getData();
+    const sortedEnergySuppliers = Object.entries(energySuppliers)
+        .sort(([, a], [, b]) => a._value - b._value)
+        .map(supplier => [supplier[0], supplier[1]._value]);
+    console.log(sortedEnergySuppliers)
     io.emit('show-charge-points', dataStations)
 }
 
