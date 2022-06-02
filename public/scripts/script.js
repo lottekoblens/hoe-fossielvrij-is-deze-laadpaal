@@ -154,11 +154,11 @@ const geocoder = new MapboxGeocoder({
 
 // Add the geocoder to the map
 map.addControl(geocoder);
+
 geocoder.on('result', (e) => {
 
     const longitude = e.result.center[0];
     const latitude = e.result.center[1];
-    console.log(latitude)
 
     socket.emit('location', {
         latitude,

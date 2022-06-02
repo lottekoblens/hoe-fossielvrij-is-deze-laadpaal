@@ -63,7 +63,16 @@ header h1 {
 .mapboxgl-popup-content {
     font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
     text-align: center;
-    color: black;
+    color: white;
+    background: var(--background-color) !important;
+}
+
+.mapboxgl-popup-close-button {
+    color: white;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    border-top-color: var(--background-color) !important;
 }
 
 .mapboxgl-ctrl-group button {
