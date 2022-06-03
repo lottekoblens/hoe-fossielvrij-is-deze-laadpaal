@@ -6,13 +6,13 @@ const closeButton = document.getElementById('close-button');
 const loading = document.getElementById('loading');
 let dataMap
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('../sw.js').then(function (registration) {
-            return registration.update();
-        });
-    });
-}
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', function () {
+//         navigator.serviceWorker.register('../sw.js').then(function (registration) {
+//             return registration.update();
+//         });
+//     });
+// }
 
 infoButton.addEventListener('click', () => {
     infoSection.style.display = 'block';
