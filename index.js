@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+app.get('/offline', (req, res) => {
+    res.render('offline');
+});
+
 app.use((req, res) => {
     res.status(404).send('Sorry, deze pagina kon ik niet vinden.');
 });
@@ -188,13 +192,9 @@ async function getChargingStations(coordinations) {
             return data;
         }))
         .catch(err => console.log(err))
-    // console.log(dataStations, 'data')
-
-    // console.log(SUSTAINDATA, 'hwvufeeuwvf')
-    // connectStationsToSupplier(SUSTAINDATA, dataStations)
     io.to(users.id).emit('show-charge-points', dataStations)
 }
 
-server.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`);
+server.listen(process.env.PORT, () => {
+    console.log(`Listening on port: ${process.env.PORT}`);
 });

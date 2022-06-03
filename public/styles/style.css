@@ -66,6 +66,11 @@ header h1 {
     color: white;
     background: var(--background-color) !important;
     font-size: 1.4em !important;
+    line-height: 25px;
+}
+
+.mapboxgl-popup-content h3 {
+    margin: 0 auto;
 }
 
 .mapboxgl-popup-close-button {
@@ -201,4 +206,8 @@ header h1 {
 
 .mapboxgl-ctrl-geocoder .mapboxgl-ctrl {
     background: rgba(255, 255, 255, 0.5);
+}
+
+#offline {
+    padding: 1em;
 }

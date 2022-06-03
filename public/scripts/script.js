@@ -6,6 +6,14 @@ const closeButton = document.getElementById('close-button');
 const loading = document.getElementById('loading');
 let dataMap
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('../sw.js').then(function (registration) {
+            return registration.update();
+        });
+    });
+}
+
 infoButton.addEventListener('click', () => {
     infoSection.style.display = 'block';
 })
@@ -149,7 +157,6 @@ const geocoder = new MapboxGeocoder({
 map.addControl(geocoder);
 
 geocoder.on('result', (e) => {
-
     const longitude = e.result.center[0];
     const latitude = e.result.center[1];
 

@@ -1,0 +1,10 @@
+{
+    "name": "Sustainable charging",
+    "short_name": "SC",
+    "theme_color": "#080D55",
+    "background_color": "#080D55",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "/",
+    "icons": []
+}
