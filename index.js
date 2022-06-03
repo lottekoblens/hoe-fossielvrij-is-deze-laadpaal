@@ -33,6 +33,9 @@ app.use((req, res) => {
 });
 
 let SUSTAINDATA = []
+let users = {
+    'id': ''
+};
 
 const groupBy = (items, prop) => {
     return items.reduce((out, item) => {
@@ -63,9 +66,17 @@ async function getData() {
 }
 
 io.on('connection', (socket) => {
+    users[socket.id] = Math.floor(Math.random() * 10000000);
+    socket.join(users[socket.id]);
+    users.id = users[socket.id]
+
     socket.on('location', async (coordinations) => {
         getChargingStations(coordinations);
     })
+
+    socket.on('disconnect', () => {
+        delete users[socket.id];
+    });
 });
 
 async function getChargingStations(coordinations) {
@@ -181,7 +192,7 @@ async function getChargingStations(coordinations) {
 
     // console.log(SUSTAINDATA, 'hwvufeeuwvf')
     // connectStationsToSupplier(SUSTAINDATA, dataStations)
-    io.emit('show-charge-points', dataStations)
+    io.to(users.id).emit('show-charge-points', dataStations)
 }
 
 server.listen(PORT, () => {
