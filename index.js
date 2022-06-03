@@ -1,4 +1,3 @@
-const Xray = require("x-ray");
 const PORT = process.env.PORT || 5151;
 require('dotenv').config();
 const express = require('express');
@@ -33,6 +32,8 @@ app.use((req, res) => {
     res.status(404).send('Sorry, deze pagina kon ik niet vinden.');
 });
 
+let SUSTAINDATA = []
+
 const groupBy = (items, prop) => {
     return items.reduce((out, item) => {
         const value = item[prop];
@@ -54,7 +55,6 @@ async function getData() {
     try {
         const rows = await queryApi.collectRows(query);
         const data = groupBy(rows, "_field");
-        // console.log(data)
         return data;
     } catch (error) {
         console.error(error);
@@ -68,27 +68,22 @@ io.on('connection', (socket) => {
     })
 });
 
-// async function getDataEV() {
-//     let x = Xray();
-//     const data = await x("https://ev-database.nl/", ".list-item", [{
-//         merk: "h2 span",
-//         model: ".model",
-//         verbruik: ".efficiency",
-//         topspeed: ".topspeed",
-//         snelladen: ".fastcharge_speed_print"
-//     }]);
-//     console.log(data, 'dit is data EV')
-//     return data;
-// }
-// getDataEV();
-//         console.log(data, 'dit is data EV')
-
 async function getChargingStations(coordinations) {
     const latitude = coordinations.latitude;
     const longitude = coordinations.longitude;
 
     const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.02}/${longitude + 0.02}/${latitude - 0.02}/${latitude + 0.02}/15`;
     let dataStations = null;
+
+    const energySuppliers = await getData();
+    Object.entries(energySuppliers)
+        .map(supplier => {
+            test = {
+                'name': supplier[0],
+                'sustain': supplier[1]._value,
+            };
+            SUSTAINDATA.push(test)
+        });
 
     await fetch(url)
         .then(res => res.json())
@@ -97,34 +92,95 @@ async function getChargingStations(coordinations) {
             let operatorName = data.operatorName;
             if (operatorName == 'PitPoint') {
                 data.operatorName = 'TotalGasPower';
+                // SUSTAINDATA.hasOwnProperty('name: TotalGasPower')
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'Allego') {
                 data.operatorName = 'Vattenfall';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'Community by Shell Recharge') {
                 data.operatorName = 'EnergieDirect';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'EV-Box') {
                 data.operatorName = 'Engie';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'Alfen') {
                 data.operatorName = 'Vandebron';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'E-Flux') {
                 data.operatorName = 'BudgetEnergie';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'LastMileSolutions') {
                 data.operatorName = 'Engie';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'Fastned') {
                 data.operatorName = 'GreenChoice';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'BlueMarble Charging') {
                 data.operatorName = 'Sepa';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else if (operatorName == 'Shell Regarge') {
                 data.operatorName = 'EnergieDirect';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Eneco') {
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Vattenfall') {
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.operatorName) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             }
             return data;
         }))
         .catch(err => console.log(err))
+    // console.log(dataStations, 'data')
 
-    const energySuppliers = await getData();
-    const sortedEnergySuppliers = Object.entries(energySuppliers)
-        .sort(([, a], [, b]) => a._value - b._value)
-        .map(supplier => [supplier[0], supplier[1]._value]);
-    console.log(sortedEnergySuppliers)
+    // console.log(SUSTAINDATA, 'hwvufeeuwvf')
+    // connectStationsToSupplier(SUSTAINDATA, dataStations)
     io.emit('show-charge-points', dataStations)
 }
 

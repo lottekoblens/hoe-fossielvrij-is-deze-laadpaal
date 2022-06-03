@@ -81,25 +81,15 @@ socket.on('show-charge-points', data => {
             },
             properties: {
                 title: 'Laadpunt',
-                description: 'Provider: ' + data.operatorName + '  Beschikbaarheid: ' + data.status,
+                description: 'Provider: ' + data.operatorName + '\nBeschikbaarheid: ' + data.status + '\nGram CO2 uitstoot met kWh: ' + data.sustain,
                 operator: data.operatorName,
-                sustainability: 'good'
+                sustainability: 'Gram CO2 uitstoot met kWh: ' + data.sustain
             }
         };
         geojson.features.push(dataForMap)
     })
     console.log(geojson, 'geojson')
 
-
-    const iets = () => {
-        console.log('test')
-        for (i = 0; i < geojson.features.length; i++) {
-            let test = geojson.features[i].properties.operator
-            console.log(test)
-        }
-    }
-
-    iets()
 
     // // Add markers to the map.
     // for (const marker of geojson.features) {
@@ -151,7 +141,7 @@ const geocoder = new MapboxGeocoder({
         zoom: 14, // If you want your result not to go further than a specific zoom
     },
     marker: {
-        color: 'orange'
+        color: 'blue'
     }
 });
 
