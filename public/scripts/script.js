@@ -89,7 +89,7 @@ socket.on('show-charge-points', data => {
             },
             properties: {
                 title: 'Laadpunt',
-                description: 'Provider: ' + data.operatorName + '\nBeschikbaarheid: ' + data.status + '\nGram CO2 uitstoot met kWh: ' + data.sustain,
+                description: 'Provider: ' + data.operatorName + '\nBeschikbaarheid: ' + data.status + '\nGram CO2 uitstoot per kWh: ' + data.sustain,
                 operator: data.operatorName,
                 sustainability: 'Gram CO2 uitstoot met kWh: ' + data.sustain
             }
