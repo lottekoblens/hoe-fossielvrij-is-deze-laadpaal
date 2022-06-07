@@ -223,7 +223,7 @@ async function getChargingStations(coordinations) {
 
                 console.log(average)
                 for (i = 0; i < data.length; i++) {
-                    if (data[i].sustain > average) {
+                    if (data[i].sustain < average) {
                         data[i].sustain = 'Duurzaam'
                     } else if (data[i].sustain === 'undefined') {
                         data[i].sustain = 'Undefined'
