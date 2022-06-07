@@ -222,15 +222,15 @@ async function getChargingStations(coordinations) {
                 const average = sum / data.length
 
                 console.log(average)
-                for (i = 0; i < data.length; i++) {
-                    if (data[i].sustain < average) {
-                        data[i].sustain = 'Duurzaam'
-                    } else if (data[i].sustain === 'undefined') {
-                        data[i].sustain = 'Undefined'
-                    } else {
-                        data[i].sustain = "Niet duurzaam"
-                    }
-                }
+                // for (i = 0; i < data.length; i++) {
+                //     if (data[i].sustain < average) {
+                //         data[i].sustain = 'Duurzaam'
+                //     } else if (data[i].sustain === 'undefined') {
+                //         data[i].sustain = 'Undefined'
+                //     } else {
+                //         data[i].sustain = "Niet duurzaam"
+                //     }
+                // }
             }
         )
         .catch(err => console.log(err))
