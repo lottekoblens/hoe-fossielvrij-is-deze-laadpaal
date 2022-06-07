@@ -100,9 +100,6 @@ async function getChargingStations(coordinations) {
             SUSTAINDATA.push(test)
         });
 
-    // console.log(SUSTAINDATA)
-
-
     await fetch(url)
         .then(res => res.json())
         .then(data => dataStations = data)
@@ -110,27 +107,9 @@ async function getChargingStations(coordinations) {
             let operatorName = data.operatorName;
             if (operatorName == 'PitPoint') {
                 data.operatorName = 'TotalGasPower';
-                // SUSTAINDATA.hasOwnProperty('name: TotalGasPower')
                 SUSTAINDATA.find((SUSTAINDATA) => {
                     if (SUSTAINDATA.name == data.operatorName) {
                         data.sustain = SUSTAINDATA.sustain
-
-                        // if (data.sustain < average) {
-                        //     // data.sustain = 'Duurzaam'
-                        //     data.sustain = 'Duurzaam'
-                        // } else if (data.sustain > average) {
-                        //     // data.sustain = 'Duurzaam'
-                        //     data.sustain = 'Niet duurzaam'
-                        // }
-                        // if (data.sustain < (average / 100 * 25)) {
-                        //     data.sustain = 'Duurzaam'
-                        // } else if (data.sustain > (average / 100 * 25) && data.sustain < (average / 100 * 50)) {
-                        //     data.sustain = 'Redelijk duurzaam'
-                        // } else if (data.sustain > (average / 100 * 50) && data.sustain < (average / 100 * 75)) {
-                        //     data.sustain = 'Niet echt duurzaam'
-                        // } else if (data.sustain > (average / 100 * 75) && data.sustain < average) {
-                        //     data.sustain = 'Niet duurzaam'
-                        // }
                     }
                 })
             } else if (operatorName == 'Allego') {
@@ -222,15 +201,15 @@ async function getChargingStations(coordinations) {
                 const average = sum / data.length
 
                 console.log(average)
-                // for (i = 0; i < data.length; i++) {
-                //     if (data[i].sustain < average) {
-                //         data[i].sustain = 'Duurzaam'
-                //     } else if (data[i].sustain === 'undefined') {
-                //         data[i].sustain = 'Undefined'
-                //     } else {
-                //         data[i].sustain = "Niet duurzaam"
-                //     }
-                // }
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].sustain < average) {
+                        data[i].sustain = 'Duurzaam'
+                    } else if (data[i].sustain > average) {
+                        data[i].sustain = 'Niet Duurzaam'
+                    } else {
+                        data[i].sustain = "Onbekend"
+                    }
+                }
             }
         )
         .catch(err => console.log(err))
