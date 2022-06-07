@@ -100,6 +100,9 @@ async function getChargingStations(coordinations) {
             SUSTAINDATA.push(test)
         });
 
+    // console.log(SUSTAINDATA)
+
+
     await fetch(url)
         .then(res => res.json())
         .then(data => dataStations = data)
@@ -111,6 +114,23 @@ async function getChargingStations(coordinations) {
                 SUSTAINDATA.find((SUSTAINDATA) => {
                     if (SUSTAINDATA.name == data.operatorName) {
                         data.sustain = SUSTAINDATA.sustain
+
+                        // if (data.sustain < average) {
+                        //     // data.sustain = 'Duurzaam'
+                        //     data.sustain = 'Duurzaam'
+                        // } else if (data.sustain > average) {
+                        //     // data.sustain = 'Duurzaam'
+                        //     data.sustain = 'Niet duurzaam'
+                        // }
+                        // if (data.sustain < (average / 100 * 25)) {
+                        //     data.sustain = 'Duurzaam'
+                        // } else if (data.sustain > (average / 100 * 25) && data.sustain < (average / 100 * 50)) {
+                        //     data.sustain = 'Redelijk duurzaam'
+                        // } else if (data.sustain > (average / 100 * 50) && data.sustain < (average / 100 * 75)) {
+                        //     data.sustain = 'Niet echt duurzaam'
+                        // } else if (data.sustain > (average / 100 * 75) && data.sustain < average) {
+                        //     data.sustain = 'Niet duurzaam'
+                        // }
                     }
                 })
             } else if (operatorName == 'Allego') {
@@ -190,7 +210,27 @@ async function getChargingStations(coordinations) {
                 })
             }
             return data;
-        }))
+        })).then(
+            data => {
+                let sum = 0;
+                for (let i = 0; i < data.length; i++) {
+                    if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
+                        //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
+                        sum += +data[i].sustain;
+                    }
+                }
+                const average = sum / data.length
+
+                console.log(average)
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].sustain > average) {
+                        data[i].sustain = 'Duurzaam'
+                    } else {
+                        data[i].sustain = 'Niet duurzaam'
+                    }
+                }
+            }
+        )
         .catch(err => console.log(err))
     io.to(users.id).emit('show-charge-points', dataStations)
 }
