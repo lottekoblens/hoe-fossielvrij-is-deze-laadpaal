@@ -225,8 +225,10 @@ async function getChargingStations(coordinations) {
                 for (i = 0; i < data.length; i++) {
                     if (data[i].sustain > average) {
                         data[i].sustain = 'Duurzaam'
+                    } else if (data[i].sustain === 'undefined') {
+                        data[i].sustain = 'Undefined'
                     } else {
-                        data[i].sustain = 'Niet duurzaam'
+                        data[i].sustain = "Niet duurzaam"
                     }
                 }
             }
