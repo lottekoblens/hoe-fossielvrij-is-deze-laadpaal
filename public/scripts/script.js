@@ -6,6 +6,10 @@ const closeButton = document.getElementById('close-button');
 const loading = document.getElementById('loading');
 let dataMap
 
+window.addEventListener('load', function () {
+    document.getElementsByClassName("mapboxgl-ctrl-geolocate")[0].click();
+}) //make location of user visible on page load
+
 // if ('serviceWorker' in navigator) {
 //     window.addEventListener('load', function () {
 //         navigator.serviceWorker.register('../sw.js').then(function (registration) {
@@ -123,6 +127,7 @@ socket.on('show-charge-points', data => {
 
     // add markers to map
     geojson.features.forEach(element => {
+        loading.style.display = 'none'; // delete loading icon
         // create a HTML element for each feature
         const el = document.createElement('div');
         el.className = 'marker';
@@ -136,7 +141,7 @@ socket.on('show-charge-points', data => {
                 `<h3>${element.properties.title}</h3><p>${element.properties.description}</p>`
             )
         ).addTo(map);
-        loading.style.display = 'none';
+
     });
 })
 
@@ -146,6 +151,7 @@ const geocoder = new MapboxGeocoder({
     mapboxgl: mapboxgl, // Set the mapbox-gl instance
     marker: true, // Do not use the default marker style
     flyTo: {
+        // center: [longitude, latitude],
         zoom: 14, // If you want your result not to go further than a specific zoom
     },
     marker: {
@@ -159,6 +165,8 @@ map.addControl(geocoder);
 geocoder.on('result', (e) => {
     const longitude = e.result.center[0];
     const latitude = e.result.center[1];
+
+    console.log(e.result)
 
     socket.emit('location', {
         latitude,
