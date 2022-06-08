@@ -33,6 +33,10 @@ app.get('/offline', (req, res) => {
     res.render('offline');
 });
 
+app.get('/laadsessie', (req, res) => {
+    res.render('laadsessie');
+});
+
 app.use((req, res) => {
     res.status(404).send('Sorry, deze pagina kon ik niet vinden.');
 });

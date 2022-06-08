@@ -82,25 +82,25 @@ header h1 {
     border-top-color: var(--background-color) !important;
 }
 
-.mapboxgl-ctrl-group button {
+/* .mapboxgl-ctrl-group button {
     width: 13vw !important;
     height: 7vh !important;
-}
+} */
 
-.mapboxgl-ctrl-attrib.mapboxgl-compact {
+/* .mapboxgl-ctrl-attrib.mapboxgl-compact {
     display: none;
-}
+} */
 
-.mapboxgl-ctrl button .mapboxgl-ctrl-icon::before {
+/* .mapboxgl-ctrl button .mapboxgl-ctrl-icon::before {
     content: 'Eigen locatie';
     display: block;
-}
+} */
 
-.mapboxgl-ctrl button .mapboxgl-ctrl-icon {
+/* .mapboxgl-ctrl button .mapboxgl-ctrl-icon {
     width: 100%;
     height: 140% !important;
     padding: 0.1em;
-}
+} */
 
 #info-button {
     font-size: 1.3em;
@@ -210,4 +210,135 @@ header h1 {
 
 #offline {
     padding: 1em;
+}
+
+#laadsessie {
+    padding: 0 2em;
+}
+
+#animation {
+    background-size: 100% 100%;
+    animation: Growingtree 20s infinite;
+    width: 20em;
+    height: 20em;
+}
+
+@keyframes Growingtree {
+    0% {
+        background-image: url('/images/boom1.png');
+    }
+
+    10% {
+        background-image: url('/images/boom2.png');
+    }
+
+    20% {
+        background-image: url('/images/boom3.png');
+    }
+
+    30% {
+        background-image: url('/images/boom4.png');
+    }
+
+    40% {
+        background-image: url('/images/boom5.png');
+    }
+
+    50% {
+        background-image: url('/images/boom6.png');
+    }
+
+    60% {
+        background-image: url('/images/boom7.png');
+    }
+
+    70% {
+        background-image: url('/images/boom8.png');
+    }
+
+    80% {
+        background-image: url('/images/boom9.png');
+    }
+
+    90% {
+        background-image: url('/images/boom10.png');
+    }
+
+    100% {
+        background-image: url('/images/boom10.png');
+    }
+}
+
+.progress {
+    position: relative;
+    height: 0.5em;
+    width: 80vw;
+    border: 0.1em solid var(--secondary-color);
+    border-radius: 1em;
+    margin-top: 1em;
+}
+
+.progress #color {
+    position: absolute;
+    background-color: #ffffff;
+    width: 0;
+    height: 0.5em;
+    border-radius: 1em;
+    animation: progres 20s infinite linear;
+}
+
+@keyframes progres {
+    0% {
+        width: 0%;
+    }
+
+    10% {
+        width: 10%;
+    }
+
+    20% {
+        width: 20%;
+    }
+
+    30% {
+        width: 30%;
+    }
+
+    40% {
+        width: 40%;
+    }
+
+    50% {
+        width: 50%;
+    }
+
+    60% {
+        width: 60%;
+    }
+
+    70% {
+        width: 70%;
+    }
+
+    80% {
+        width: 80%;
+    }
+
+    90% {
+        width: 90%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+#stopLoading {
+    background: var(--secondary-color);
+    color: white;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
 }
