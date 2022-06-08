@@ -19,6 +19,7 @@ const client = new InfluxDB({
     token: INFLUXDB_KEY
 });
 const queryApi = client.getQueryApi(INFLUXDB_ORG);
+const math = require('mathjs')
 
 app.set('view engine', 'ejs');
 
@@ -87,7 +88,7 @@ async function getChargingStations(coordinations) {
     const latitude = coordinations.latitude;
     const longitude = coordinations.longitude;
 
-    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.02}/${longitude + 0.02}/${latitude - 0.02}/${latitude + 0.02}/15`;
+    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.02}/${longitude + 0.02}/${latitude - 0.015}/${latitude + 0.015}/15`;
     let dataStations = null;
 
     const energySuppliers = await getData();
@@ -191,25 +192,33 @@ async function getChargingStations(coordinations) {
             return data;
         })).then(
             data => {
-                let sum = 0;
-                for (let i = 0; i < data.length; i++) {
-                    if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
-                        //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
-                        sum += +data[i].sustain;
-                    }
-                }
-                const average = sum / data.length
+                // let sum = 0;
+                // for (let i = 0; i < data.length; i++) {
+                //     if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
+                //         //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
+                //         sum += +data[i].sustain;
+                //     }
+                // }
+                // const average = sum / data.length
 
-                console.log(average)
-                for (i = 0; i < data.length; i++) {
-                    if (data[i].sustain < average) {
-                        data[i].sustain = 'Duurzaam'
-                    } else if (data[i].sustain > average) {
-                        data[i].sustain = 'Niet Duurzaam'
-                    } else {
-                        data[i].sustain = "Onbekend"
+                // console.log(average)
+                // for (i = 0; i < data.length; i++) {
+                //     if (data[i].sustain < average) {
+                //         data[i].sustain = 'Duurzaam'
+                //     } else if (data[i].sustain > average) {
+                //         data[i].sustain = 'Niet Duurzaam'
+                //     } else {
+                //         data[i].sustain = "Onbekend"
+                //     }
+                // }
+                let sustainData = []
+                data.forEach(obj => {
+                    if (obj.sustain) {
+                        sustainData.push(obj.sustain)
                     }
-                }
+                })
+                let standardDeviation = math.std(sustainData)
+                console.log(standardDeviation)
             }
         )
         .catch(err => console.log(err))
