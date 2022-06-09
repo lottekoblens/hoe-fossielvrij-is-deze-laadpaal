@@ -97,7 +97,6 @@ if (window.location.pathname === '/') {
     let geojson = {
         type: 'ChargingStations',
         features: [],
-
     };
 
     socket.on('show-charge-points', data => {
@@ -130,7 +129,6 @@ if (window.location.pathname === '/') {
         }
         average = calculateAverage(data)
 
-
         generateMapMarkers(geojson, average)
         loading.style.display = 'none';
 
@@ -142,7 +140,6 @@ if (window.location.pathname === '/') {
         mapboxgl: mapboxgl, // Set the mapbox-gl instance
         marker: true, // Do not use the default marker style
         flyTo: {
-            // center: [longitude, latitude],
             zoom: 14, // If you want your result not to go further than a specific zoom
         },
         marker: {
@@ -157,19 +154,11 @@ if (window.location.pathname === '/') {
         const longitude = e.result.center[0];
         const latitude = e.result.center[1];
 
-        console.log(e.result)
         map.flyTo({
             center: [longitude, latitude],
             speed: 1
         });
-        // generateMapMarkers(geojson, average)
 
-        // var marker = new mapboxgl.Marker({
-        //         draggable: true,
-        //         color: "pink"
-        //     })
-        //     .setLngLat(e.result.center)
-        //     .addTo(map)
         socket.emit('location', {
             latitude,
             longitude

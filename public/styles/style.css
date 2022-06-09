@@ -385,3 +385,31 @@ header h1 {
     height: 2.45rem;
     width: 1.5rem
 }
+
+#welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1em;
+}
+
+#welcome img {
+    width: 5em;
+    height: 4em;
+}
+
+#welcome-section {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#welcome-section a {
+    background: var(--secondary-color);
+    color: white;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1em;
+    text-decoration: none;
+}

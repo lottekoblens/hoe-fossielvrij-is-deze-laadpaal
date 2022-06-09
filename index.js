@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+app.get('/welkom', (req, res) => {
+    res.render('welkom');
+});
+
 app.get('/offline', (req, res) => {
     res.render('offline');
 });
