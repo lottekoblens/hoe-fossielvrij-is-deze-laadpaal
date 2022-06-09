@@ -60,7 +60,7 @@ if (window.location.pathname === '/') {
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        zoom: 15, // starting zoom
+        zoom: 17, // starting zoom
         center: [4.899431, 52.379189]
     });
 
@@ -96,19 +96,7 @@ if (window.location.pathname === '/') {
 
     let geojson = {
         type: 'ChargingStations',
-        features: [{
-            type: "joe",
-            geometry: {
-                type: 'Laadpunt',
-                coordinates: [4.693333, 52.496557]
-            },
-            properties: {
-                title: 'Laadpunt',
-                description: 'joe',
-                operator: 'je moeder',
-                sustainability: 0,
-            }
-        }],
+        features: [],
 
     };
 

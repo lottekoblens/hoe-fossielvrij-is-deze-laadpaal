@@ -370,7 +370,7 @@ header h1 {
 
 .custom-marker-red {
     cursor: pointer;
-    background-image: url('/images/red-full.png');
+    background-image: url('/images/red-charge.png');
     background-repeat: no-repeat;
     background-size: 100%;
     height: 2.45rem;
@@ -379,7 +379,7 @@ header h1 {
 
 .custom-marker-green {
     cursor: pointer;
-    background-image: url('/images/mapbox-icon.png');
+    background-image: url('/images/green-charge.png');
     background-repeat: no-repeat;
     background-size: 100%;
     height: 2.45rem;
