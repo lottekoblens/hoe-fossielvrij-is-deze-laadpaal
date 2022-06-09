@@ -5,6 +5,7 @@ const infoSection = document.getElementById('info');
 const closeButton = document.getElementById('close-button');
 const loading = document.getElementById('loading');
 let dataMap
+let average
 
 if (window.location.pathname === '/') {
     window.addEventListener('load', function () {
@@ -19,6 +20,30 @@ if (window.location.pathname === '/') {
         infoSection.style.display = 'none';
     })
 
+    const generateMapMarkers = (geojson, average) => {
+        geojson.features.forEach((singleMarker) => {
+            console.log(singleMarker)
+            const HTMLMarker = document.createElement('div')
+            if (singleMarker.properties.sustainability <= average) {
+                HTMLMarker.className = 'custom-marker-green';
+            } else if (singleMarker.properties.sustainability >= average) {
+                HTMLMarker.className = 'custom-marker-red';
+            }
+
+            const marker = new mapboxgl.Marker(HTMLMarker, {
+                    scale: 0.5,
+                })
+                .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
+                    new mapboxgl.Popup({
+                        offset: 25
+                    }) // add popups
+                    .setHTML(
+                        `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a href="/laadsessie">Start laden</a>`
+                    )
+                )
+                .addTo(map);
+        })
+    }
 
 
     // if ('serviceWorker' in navigator) {
@@ -28,7 +53,6 @@ if (window.location.pathname === '/') {
     //         });
     //     });
     // }
-
 
 
     mapboxgl.accessToken =
@@ -89,7 +113,6 @@ if (window.location.pathname === '/') {
     };
 
     socket.on('show-charge-points', data => {
-
         data.forEach(data => {
             let dataForMap = {
                 type: data.markerType,
@@ -117,37 +140,12 @@ if (window.location.pathname === '/') {
             }
             return sum / data.length
         }
-        const average = calculateAverage(data)
+        average = calculateAverage(data)
 
-        map.on('load', async () => {
-            console.log(geojson);
-            geojson.features.forEach((singleMarker) => {
-                console.log(singleMarker)
-                const HTMLMarker = document.createElement('div')
-                if (singleMarker.properties.sustainability <= average) {
-                    HTMLMarker.className = 'custom-marker-green';
-                } else if (singleMarker.properties.sustainability >= average) {
-                    HTMLMarker.className = 'custom-marker-red';
-                }
-                // const HTMLMarker = document.createElement('div');
-                // HTMLMarker.className = 'custom-marker';
-                // console.log(singleMarker)
 
-                const marker = new mapboxgl.Marker(HTMLMarker, {
-                        scale: 0.5,
-                    })
-                    .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
-                        new mapboxgl.Popup({
-                            offset: 25
-                        }) // add popups
-                        .setHTML(
-                            `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a href="/laadsessie">Start laden</a>`
-                        )
-                    )
-                    .addTo(map);
-            })
-            loading.style.display = 'none';
-        })
+        generateMapMarkers(geojson, average)
+        loading.style.display = 'none';
+
     })
 
     const geocoder = new MapboxGeocoder({
@@ -172,11 +170,22 @@ if (window.location.pathname === '/') {
         const latitude = e.result.center[1];
 
         console.log(e.result)
+        map.flyTo({
+            center: [longitude, latitude],
+            speed: 1
+        });
+        // generateMapMarkers(geojson, average)
 
+        // var marker = new mapboxgl.Marker({
+        //         draggable: true,
+        //         color: "pink"
+        //     })
+        //     .setLngLat(e.result.center)
+        //     .addTo(map)
         socket.emit('location', {
             latitude,
             longitude
-        })
+        }, console.log('test'))
     })
 
     map.addControl(
