@@ -73,22 +73,23 @@ if (window.location.pathname === '/') {
     let geojson = {
         type: 'ChargingStations',
         features: [{
-            type: 'Station',
+            type: "joe",
             geometry: {
-                type: 'Point',
-                coordinates: [-77.032, 38.913]
+                type: 'Laadpunt',
+                coordinates: [4.693333, 52.496557]
             },
             properties: {
-                title: 'Mapbox',
-                description: 'Washington, D.C.',
-                iconSize: [40, 40]
+                title: 'Laadpunt',
+                description: 'joe',
+                operator: 'je moeder',
+                sustainability: 0,
             }
         }],
 
     };
 
     socket.on('show-charge-points', data => {
-        console.log(data)
+
         data.forEach(data => {
             let dataForMap = {
                 type: data.markerType,
@@ -100,54 +101,53 @@ if (window.location.pathname === '/') {
                     title: 'Laadpunt',
                     description: 'Provider: ' + data.operatorName + '\nBeschikbaarheid: ' + data.status + '\nGram CO2 uitstoot per kWh: ' + data.sustain,
                     operator: data.operatorName,
-                    sustainability: 'Gram CO2 uitstoot met kWh: ' + data.sustain
+                    sustainability: data.sustain
                 }
             };
             geojson.features.push(dataForMap)
         })
-        console.log(geojson, 'geojson')
 
+        const calculateAverage = (data) => {
+            let sum = 0;
+            for (let i = 0; i < data.length; i++) {
+                if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
+                    //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
+                    sum += +data[i].sustain;
+                }
+            }
+            return sum / data.length
+        }
+        const average = calculateAverage(data)
 
-        // // Add markers to the map.
-        // for (const marker of geojson.features) {
-        //     // Create a DOM element for each marker.
-        //     const el = document.createElement('div');
-        //     const width = marker.properties.iconSize[0];
-        //     const height = marker.properties.iconSize[1];
-        //     el.className = 'marker';
-        //     el.style.backgroundImage = `url(https://placekitten.com/g/${width}/${height}/)`;
-        //     el.style.width = `${width}px`;
-        //     el.style.height = `${height}px`;
-        //     el.style.backgroundSize = '100%';
+        map.on('load', async () => {
+            console.log(geojson);
+            geojson.features.forEach((singleMarker) => {
+                console.log(singleMarker)
+                const HTMLMarker = document.createElement('div')
+                if (singleMarker.properties.sustainability <= average) {
+                    HTMLMarker.className = 'custom-marker-green';
+                } else if (singleMarker.properties.sustainability >= average) {
+                    HTMLMarker.className = 'custom-marker-red';
+                }
+                // const HTMLMarker = document.createElement('div');
+                // HTMLMarker.className = 'custom-marker';
+                // console.log(singleMarker)
 
-        //     el.addEventListener('click', () => {
-        //         window.alert(marker.properties.message);
-        //     });
-
-        //     // Add markers to the map.
-        //     new mapboxgl.Marker(el)
-        //         .setLngLat(marker.geometry.coordinates)
-        //         .addTo(map);
-        // }
-
-        // add markers to map
-        geojson.features.forEach(element => {
-            loading.style.display = 'none'; // delete loading icon
-            // create a HTML element for each feature
-            const el = document.createElement('div');
-            el.className = 'marker';
-
-            // make a marker for each feature and add to the map
-            new mapboxgl.Marker(el).setLngLat(element.geometry.coordinates).setPopup(
-                new mapboxgl.Popup({
-                    offset: 25
-                }) // add popups
-                .setHTML(
-                    `<h3>${element.properties.title}</h3><p>${element.properties.description}</p><a href="/laadsessie">Start laden</a>`
-                )
-            ).addTo(map);
-
-        });
+                const marker = new mapboxgl.Marker(HTMLMarker, {
+                        scale: 0.5,
+                    })
+                    .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
+                        new mapboxgl.Popup({
+                            offset: 25
+                        }) // add popups
+                        .setHTML(
+                            `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a href="/laadsessie">Start laden</a>`
+                        )
+                    )
+                    .addTo(map);
+            })
+            loading.style.display = 'none';
+        })
     })
 
     const geocoder = new MapboxGeocoder({
