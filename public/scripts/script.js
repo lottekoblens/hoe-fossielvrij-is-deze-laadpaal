@@ -22,7 +22,6 @@ if (window.location.pathname === '/') {
 
     const generateMapMarkers = (geojson, average) => {
         geojson.features.forEach((singleMarker) => {
-            console.log(singleMarker)
             const HTMLMarker = document.createElement('div')
             if (singleMarker.properties.sustainability <= average) {
                 HTMLMarker.className = 'custom-marker-green';
