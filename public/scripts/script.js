@@ -38,7 +38,7 @@ if (window.location.pathname === '/') {
                         offset: 25
                     }) // add popups
                     .setHTML(
-                        `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a href="/laadsessie">Start laden</a>`
+                        `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/laadsessie">Start laden</a>`
                     )
                 )
                 .addTo(map);
