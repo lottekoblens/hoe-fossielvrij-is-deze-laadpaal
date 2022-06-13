@@ -26,7 +26,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/map', (req, res) => {
-    res.render('home');
+    res.render('map');
 });
 
 app.get('/', (req, res) => {

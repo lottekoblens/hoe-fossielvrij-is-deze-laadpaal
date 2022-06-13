@@ -1,10 +1,10 @@
 const CACHE_VERSION = 'v3'
 const HTML_CACHE = 'v1_html'
 const CACHE_FILES = [
-    '/',
     '/styles/style.css',
     '/scripts/script.js',
-    '/offline.'
+    '/offline',
+    '/images/logo.png'
 ]
 
 self.addEventListener('install', event => {
