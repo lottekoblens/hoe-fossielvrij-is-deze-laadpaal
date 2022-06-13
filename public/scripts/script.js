@@ -7,7 +7,7 @@ const loading = document.getElementById('loading');
 let dataMap
 let average
 
-if (window.location.pathname === '/') {
+if (window.location.pathname === '/map') {
     window.addEventListener('load', function () {
         document.getElementsByClassName("mapboxgl-ctrl-geolocate")[0].click();
     }) //make location of user visible on page load
@@ -23,9 +23,11 @@ if (window.location.pathname === '/') {
     const generateMapMarkers = (geojson, average) => {
         geojson.features.forEach((singleMarker) => {
             const HTMLMarker = document.createElement('div')
-            if (singleMarker.properties.sustainability <= average) {
+            if (singleMarker.properties.sustainability < average - 2) {
                 HTMLMarker.className = 'custom-marker-green';
-            } else if (singleMarker.properties.sustainability >= average) {
+            } else if (singleMarker.properties.sustainability >= average - 2 && singleMarker.properties.sustainability <= average + 2) {
+                HTMLMarker.className = 'custom-marker-orange';
+            } else if (singleMarker.properties.sustainability > average + 2) {
                 HTMLMarker.className = 'custom-marker-red';
             }
 
@@ -108,25 +110,31 @@ if (window.location.pathname === '/') {
                 },
                 properties: {
                     title: 'Laadpunt',
-                    description: 'Provider: ' + data.operatorName + '\nBeschikbaarheid: ' + data.status + '\nGram CO2 uitstoot per kWh: ' + data.sustain,
+                    description: '\nBeschikbaarheid: ' + data.status + '\nGram CO2 uitstoot per kWh: ' + data.sustain,
                     operator: data.operatorName,
                     sustainability: data.sustain
                 }
             };
+            if (data.provider === 'Unknown') {
+                data.sustain = average
+            }
             geojson.features.push(dataForMap)
         })
 
         const calculateAverage = (data) => {
+            console.log(data)
+            average = 0;
             let sum = 0;
             for (let i = 0; i < data.length; i++) {
                 if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
                     //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
-                    sum += +data[i].sustain;
+                    sum += data[i].sustain;
                 }
             }
             return sum / data.length
         }
         average = calculateAverage(data)
+        console.log(average);
 
         generateMapMarkers(geojson, average)
         loading.style.display = 'none';

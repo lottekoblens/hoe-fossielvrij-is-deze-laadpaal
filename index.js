@@ -25,11 +25,11 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
+app.get('/map', (req, res) => {
     res.render('home');
 });
 
-app.get('/welkom', (req, res) => {
+app.get('/', (req, res) => {
     res.render('welkom');
 });
 
@@ -115,87 +115,107 @@ async function getChargingStations(coordinations) {
         .then(data => data.map(data => {
             let operatorName = data.operatorName;
             if (operatorName == 'PitPoint') {
-                data.operatorName = 'TotalGasPower';
+                data['provider'] = 'TotalGasPower';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Allego') {
-                data.operatorName = 'Vattenfall';
+                data['provider'] = 'Vattenfall';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Allego - Groningen and Drenthe') {
+                data['provider'] = 'Vattenfall';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Community by Shell Recharge') {
-                data.operatorName = 'EnergieDirect';
+                data['provider'] = 'EnergieDirect';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Blue Current') {
+                data['provider'] = 'EnergieDirect';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'EV-Box') {
-                data.operatorName = 'Engie';
+                data['provider'] = 'Engie';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Alfen') {
-                data.operatorName = 'Vandebron';
+                data['provider'] = 'Vandebron';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'E-Flux') {
-                data.operatorName = 'BudgetEnergie';
+                data['provider'] = 'BudgetEnergie';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'LastMileSolutions') {
-                data.operatorName = 'Engie';
+                data['provider'] = 'Engie';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Fastned') {
-                data.operatorName = 'GreenChoice';
+                data['provider'] = 'GreenChoice';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'BlueMarble Charging') {
-                data.operatorName = 'Sepa';
+                data['provider'] = 'Sepa';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Shell Regarge') {
-                data.operatorName = 'EnergieDirect';
+                data['provider'] = 'EnergieDirect';
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Eneco') {
+                data['provider'] = 'Eneco'
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
             } else if (operatorName == 'Vattenfall') {
+                data['provider'] = 'Vattenfall'
                 SUSTAINDATA.find((SUSTAINDATA) => {
-                    if (SUSTAINDATA.name == data.operatorName) {
+                    if (SUSTAINDATA.name == data.provider) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
+            } else {
+                if (operatorName !== SUSTAINDATA.name) {
+                    data['provider'] = 'Unknown'
+                }
             }
             return data;
         }))
