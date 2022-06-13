@@ -38,6 +38,32 @@ header h1 {
     font-family: 'Roboto-Thin', Arial, Helvetica, sans-serif;
 }
 
+#popupError {
+    display: none;
+    width: 80vw;
+    height: 10vh;
+    background: var(--background-color);
+    margin: 6.5em auto 1.5em auto;
+    padding: 0.5em;
+    border-radius: var(--border-radius);
+}
+
+#popupError p {
+    max-width: 65vw;
+    margin-top: 0;
+}
+
+#popupError button {
+    position: absolute;
+    top: 28.5vmin;
+    right: 10.4vw;
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: var(--border-radius);
+}
+
 #map {
     z-index: -1;
     position: absolute;
@@ -129,6 +155,7 @@ header h1 {
     margin: 6.5em auto 1.5em auto;
     padding: 0.5em;
     border-radius: var(--border-radius);
+    z-index: 10;
 }
 
 #info h2 {
@@ -170,10 +197,11 @@ header h1 {
     top: 45vh;
     left: 40vw;
     font-size: 2em;
+    z-index: 1;
 }
 
 #loading-ring {
-    display: inline-block;
+    display: none;
     width: 2em;
     height: 2em;
 }
@@ -188,6 +216,7 @@ header h1 {
     border: 0.2em solid #d9574e;
     border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
     animation: loading-ring 1.2s linear infinite;
+    z-index: 1;
 }
 
 @keyframes loading-ring {

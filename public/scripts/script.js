@@ -1,9 +1,11 @@
 const socket = io();
-const errorMessage = document.getElementById('#error');
+const errorMessage = document.getElementById('error');
 const infoButton = document.getElementById('info-button');
 const infoSection = document.getElementById('info');
 const closeButton = document.getElementById('close-button');
-const loading = document.getElementById('loading');
+const closePopupButton = document.getElementById('close-popup-button');
+const loading = document.getElementById('loading-ring');
+const popupError = document.getElementById('popupError');
 let dataMap
 let average
 
@@ -18,6 +20,10 @@ if (window.location.pathname === '/map') {
 
     closeButton.addEventListener('click', () => {
         infoSection.style.display = 'none';
+    })
+
+    closePopupButton.addEventListener('click', () => {
+        popupError.style.display = 'none';
     })
 
     const generateMapMarkers = (geojson, average) => {
@@ -68,12 +74,14 @@ if (window.location.pathname === '/map') {
     const getUserLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
+
         } else {
             errorMessage.innerHTML = 'The browser does not support geolocation';
         }
     }
 
     const userPosition = location => {
+        loading.style.display = 'block'
         const latitude = location.coords.latitude;
         const longitude = location.coords.longitude;
 
@@ -90,7 +98,7 @@ if (window.location.pathname === '/map') {
 
     const ErrorPermissionDenied = error => {
         if (error.PERMISSION_DENIED) {
-            errorMessage.innerHTML = 'The user has denied the request for Geolocation.';
+            popupError.style.display = 'block';
         }
     }
     getUserLocation();

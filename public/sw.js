@@ -4,7 +4,7 @@ const CACHE_FILES = [
     '/',
     '/styles/style.css',
     '/scripts/script.js',
-    '/offline'
+    '/offline.'
 ]
 
 self.addEventListener('install', event => {
