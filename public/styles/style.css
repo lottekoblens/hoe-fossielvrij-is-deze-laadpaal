@@ -38,6 +38,8 @@ header h1 {
     font-family: 'Roboto-Thin', Arial, Helvetica, sans-serif;
 }
 
+
+/* map page */
 #popupError {
     display: none;
     width: 80vw;
@@ -82,6 +84,33 @@ header h1 {
     cursor: pointer;
 }
 
+.custom-marker-red {
+    cursor: pointer;
+    background-image: url('/images/red-charge.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 2.45rem;
+    width: 1.5rem
+}
+
+.custom-marker-green {
+    cursor: pointer;
+    background-image: url('/images/green-charge.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 2.45rem;
+    width: 1.5rem
+}
+
+.custom-marker-orange {
+    cursor: pointer;
+    background-image: url('/images/orange-charge.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 2.45rem;
+    width: 1.5rem
+}
+
 .mapboxgl-popup {
     max-width: 10vw;
 }
@@ -108,26 +137,28 @@ header h1 {
     border-top-color: var(--background-color) !important;
 }
 
-/* .mapboxgl-ctrl-group button {
-    width: 13vw !important;
-    height: 7vh !important;
-} */
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+    border-bottom-color: var(--background-color) !important;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: var(--background-color) !important;
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: var(--background-color) !important;
+}
 
 .mapboxgl-ctrl-attrib.mapboxgl-compact {
     display: none;
 }
 
-/* .mapboxgl-ctrl button .mapboxgl-ctrl-icon::before {
-    content: 'Eigen locatie';
-    display: block;
-} */
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib-inner {
+    display: none !important;
+}
 
-/* .mapboxgl-ctrl button .mapboxgl-ctrl-icon {
-    width: 100%;
-    height: 140% !important;
-    padding: 0.1em;
-} */
-
+/* legend */
 #info-button {
     font-size: 1.3em;
     display: flex;
@@ -186,11 +217,11 @@ header h1 {
     padding-bottom: 1em;
 }
 
-.mapboxgl-ctrl-logo,
-.mapboxgl-ctrl-attrib-inner {
-    display: none !important;
+#icons {
+    max-width: 1.3em;
 }
 
+/* loading icon */
 #loading {
     display: block;
     position: absolute;
@@ -229,6 +260,7 @@ header h1 {
     }
 }
 
+/* geocoder */
 .geocoder {
     position: absolute;
     z-index: 1;
@@ -246,10 +278,12 @@ header h1 {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* offline page */
 #offline {
     padding: 1em;
 }
 
+/* loading session page */
 #laadsessie {
     padding: 0 2em;
     display: flex;
@@ -259,12 +293,12 @@ header h1 {
 
 #animation {
     background-size: 100% 100%;
-    animation: Growingtree 20s infinite;
+    animation: growingTree 20s infinite;
     width: 20em;
     height: 20em;
 }
 
-@keyframes Growingtree {
+@keyframes growingTree {
     0% {
         background-image: url('/images/boom1.png');
     }
@@ -307,6 +341,59 @@ header h1 {
 
     100% {
         background-image: url('/images/boom10.png');
+    }
+}
+
+#animation-bad {
+    background-size: 100% 100%;
+    animation: dyingTree 20s infinite;
+    width: 20em;
+    height: 20em;
+}
+
+@keyframes dyingTree {
+    0% {
+        background-image: url('/images/boom10.png');
+    }
+
+    10% {
+        background-image: url('/images/boom10.png');
+    }
+
+    20% {
+        background-image: url('/images/boom9.png');
+    }
+
+    30% {
+        background-image: url('/images/boom8.png');
+    }
+
+    40% {
+        background-image: url('/images/boom7.png');
+    }
+
+    50% {
+        background-image: url('/images/boom6.png');
+    }
+
+    60% {
+        background-image: url('/images/boom5.png');
+    }
+
+    70% {
+        background-image: url('/images/boom4.png');
+    }
+
+    80% {
+        background-image: url('/images/boom3.png');
+    }
+
+    90% {
+        background-image: url('/images/boom2.png');
+    }
+
+    100% {
+        background-image: url('/images/boom1.png');
     }
 }
 
@@ -399,40 +486,22 @@ header h1 {
     outline: none;
 }
 
-#laadsessie a {
+#laadsessie a:last-of-type {
     position: absolute;
     bottom: 1em;
-    color: white;
+    border-radius: var(--border-radius);
+    background: white;
+    color: var(--background-color) !important;
+    padding: 0.5em;
     text-decoration: none;
 }
 
-.custom-marker-red {
-    cursor: pointer;
-    background-image: url('/images/red-charge.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 2.45rem;
-    width: 1.5rem
+#boomPlanten {
+    color: var(--secondary-color);
+    margin-bottom: 1em;
 }
 
-.custom-marker-green {
-    cursor: pointer;
-    background-image: url('/images/green-charge.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 2.45rem;
-    width: 1.5rem
-}
-
-.custom-marker-orange {
-    cursor: pointer;
-    background-image: url('/images/orange-charge.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 2.45rem;
-    width: 1.5rem
-}
-
+/* welcome page */
 #welcome {
     display: flex;
     flex-direction: row;
@@ -468,8 +537,4 @@ header h1 {
 #welcome-section ul li {
     list-style: none;
     padding-bottom: 0.5em;
-}
-
-#icons {
-    max-width: 1.3em;
 }
