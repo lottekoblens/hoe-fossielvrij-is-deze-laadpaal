@@ -9,13 +9,13 @@ const popupError = document.getElementById('popupError');
 let dataMap
 let average
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('../sw.js').then(function (registration) {
-            return registration.update();
-        });
-    });
-} // add service worker
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', function () {
+//         navigator.serviceWorker.register('../sw.js').then(function (registration) {
+//             return registration.update();
+//         });
+//     });
+// } // add service worker
 
 if (window.location.pathname === '/map') {
     window.addEventListener('load', function () {
@@ -82,19 +82,6 @@ if (window.location.pathname === '/map') {
                     )
                     .addTo(map); // add markers and popups to map
             } // based on the sustainabilty the icons will load with the right color
-
-            // const marker = new mapboxgl.Marker(HTMLMarker, {
-            //         scale: 0.5,
-            //     })
-            //     .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
-            //         new mapboxgl.Popup({
-            //             offset: 25
-            //         }) // add popups
-            //         .setHTML(
-            //             `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/laadsessie">Meer informatie</a>`
-            //         ) // give popups the title, description and a button
-            //     )
-            //     .addTo(map); // add markers and popups to map
         })
     }
 
@@ -163,6 +150,8 @@ if (window.location.pathname === '/map') {
             }
             geojson.features.push(dataForMap) // for every data object the above will be add to the geojson object
         })
+        let dataChargingPoints = geojson.features
+        sessionStorage.setItem("dataChargingPoints", JSON.stringify(dataChargingPoints));
 
         const calculateAverage = (data) => {
             average = 0;
@@ -236,11 +225,7 @@ if (window.location.pathname === '/laadsessie') {
 }
 
 if (window.location.pathname === '/nietduurzaam') {
-    const stopLoadingButton = document.getElementById('stopLoading')
-    const animationTree = document.getElementById('animation-bad')
-    const animationProgress = document.getElementById('color')
-    stopLoadingButton.addEventListener('click', (e) => {
-        animationTree.style.animationPlayState = 'paused';
-        animationProgress.style.animationPlayState = 'paused';
-    })
+    // console.log('ye')
+    dataChargingPoints = JSON.parse(sessionStorage.getItem("dataChargingPoints"));
+    console.log(dataChargingPoints)
 }

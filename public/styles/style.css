@@ -481,6 +481,21 @@ header h1 {
     margin-bottom: 1em;
 }
 
+#walk {
+    background: white;
+    color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 0.5em;
+}
+
+#points {
+    background: var(--secondary-color);
+    color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 0.5em;
+    width: fit-content;
+}
+
 /* welcome page */
 #welcome {
     display: flex;

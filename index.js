@@ -86,29 +86,29 @@ async function getData() {
     }
 }
 
-async function getForecast() {
-    const query = `
-    from(bucket: "elmap")
-      |> range(start: now(), stop: 25h)
-      |> filter(fn: (r) => r["_measurement"] == "forecast")
-      |> filter(fn: (r) => r["kind"] == "powerConsumptionBreakdown")
-      |> filter(fn: (r) => r["zone"] == "NL")
-      |> filter(fn: (r) => r["timeoffset"] == "baseline")
-      |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)
-      |> sort(columns: ["_time"], desc: false)
-      |> yield(name: "mean")
-    `;
-    try {
-        const rows = await queryApi.collectRows(query);
-        const data = Object.entries(groupBy(rows, "_field"));
-        console.log(data)
-        return data;
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
-}
-getForecast()
+// async function getForecast() {
+//     const query = `
+//     from(bucket: "elmap")
+//       |> range(start: now(), stop: 25h)
+//       |> filter(fn: (r) => r["_measurement"] == "forecast")
+//       |> filter(fn: (r) => r["kind"] == "powerConsumptionBreakdown")
+//       |> filter(fn: (r) => r["zone"] == "NL")
+//       |> filter(fn: (r) => r["timeoffset"] == "baseline")
+//       |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)
+//       |> sort(columns: ["_time"], desc: false)
+//       |> yield(name: "mean")
+//     `;
+//     try {
+//         const rows = await queryApi.collectRows(query);
+//         const data = Object.entries(groupBy(rows, "_field"));
+//         // console.log(data)
+//         return data;
+//     } catch (error) {
+//         console.error(error);
+//         return [];
+//     }
+// }
+// getForecast()
 
 io.on('connection', (socket) => {
     users[socket.id] = Math.floor(Math.random() * 10000000);
