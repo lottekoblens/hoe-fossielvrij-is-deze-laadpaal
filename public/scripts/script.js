@@ -40,24 +40,61 @@ if (window.location.pathname === '/map') {
             const HTMLMarker = document.createElement('div')
             if (singleMarker.properties.sustainability <= average) {
                 HTMLMarker.className = 'custom-marker-green';
+                const marker = new mapboxgl.Marker(HTMLMarker, {
+                        scale: 0.5,
+                    })
+                    .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
+                        new mapboxgl.Popup({
+                            offset: 25
+                        }) // add popups
+                        .setHTML(
+                            `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/duurzaam">Meer informatie</a>`
+                        ) // give popups the title, description and a button
+                    )
+                    .addTo(map); // add markers and popups to map
+
             } else if (singleMarker.properties.sustainability > average && singleMarker.properties.sustainability <= average + 2) {
                 HTMLMarker.className = 'custom-marker-orange';
+                const marker = new mapboxgl.Marker(HTMLMarker, {
+                        scale: 0.5,
+                    })
+                    .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
+                        new mapboxgl.Popup({
+                            offset: 25
+                        }) // add popups
+                        .setHTML(
+                            `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/redelijkduurzaam">Meer informatie</a>`
+                        ) // give popups the title, description and a button
+                    )
+                    .addTo(map); // add markers and popups to map
             } else if (singleMarker.properties.sustainability > average + 2) {
                 HTMLMarker.className = 'custom-marker-red';
+                const marker = new mapboxgl.Marker(HTMLMarker, {
+                        scale: 0.5,
+                    })
+                    .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
+                        new mapboxgl.Popup({
+                            offset: 25
+                        }) // add popups
+                        .setHTML(
+                            `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
+                        ) // give popups the title, description and a button
+                    )
+                    .addTo(map); // add markers and popups to map
             } // based on the sustainabilty the icons will load with the right color
 
-            const marker = new mapboxgl.Marker(HTMLMarker, {
-                    scale: 0.5,
-                })
-                .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
-                    new mapboxgl.Popup({
-                        offset: 25
-                    }) // add popups
-                    .setHTML(
-                        `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/laadsessie">Start laden</a>`
-                    ) // give popups the title, description and a button
-                )
-                .addTo(map); // add markers and popups to map
+            // const marker = new mapboxgl.Marker(HTMLMarker, {
+            //         scale: 0.5,
+            //     })
+            //     .setLngLat([singleMarker.geometry.coordinates[0], singleMarker.geometry.coordinates[1]]).setPopup(
+            //         new mapboxgl.Popup({
+            //             offset: 25
+            //         }) // add popups
+            //         .setHTML(
+            //             `<h3>${singleMarker.properties.title}</h3><p>${singleMarker.properties.description}</p><a id="startLoading" href="/laadsessie">Meer informatie</a>`
+            //         ) // give popups the title, description and a button
+            //     )
+            //     .addTo(map); // add markers and popups to map
         })
     }
 
@@ -191,6 +228,16 @@ if (window.location.pathname === '/map') {
 if (window.location.pathname === '/laadsessie') {
     const stopLoadingButton = document.getElementById('stopLoading')
     const animationTree = document.getElementById('animation')
+    const animationProgress = document.getElementById('color')
+    stopLoadingButton.addEventListener('click', (e) => {
+        animationTree.style.animationPlayState = 'paused';
+        animationProgress.style.animationPlayState = 'paused';
+    })
+}
+
+if (window.location.pathname === '/nietduurzaam') {
+    const stopLoadingButton = document.getElementById('stopLoading')
+    const animationTree = document.getElementById('animation-bad')
     const animationProgress = document.getElementById('color')
     stopLoadingButton.addEventListener('click', (e) => {
         animationTree.style.animationPlayState = 'paused';

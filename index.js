@@ -37,11 +37,15 @@ app.get('/offline', (req, res) => {
     res.render('offline');
 });
 
-app.get('/laadsessie', (req, res) => {
+app.get('/duurzaam', (req, res) => {
     res.render('laadsessie');
 });
 
-app.get('/laadsessie-slecht', (req, res) => {
+app.get('/nietduurzaam', (req, res) => {
+    res.render('laadsessie-slecht');
+});
+
+app.get('/redelijkduurzaam', (req, res) => {
     res.render('laadsessie-slecht');
 });
 

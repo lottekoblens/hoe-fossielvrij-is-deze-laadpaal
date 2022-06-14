@@ -300,42 +300,26 @@ header h1 {
 
 @keyframes growingTree {
     0% {
-        background-image: url('/images/boom1.png');
-    }
-
-    10% {
-        background-image: url('/images/boom2.png');
-    }
-
-    20% {
-        background-image: url('/images/boom3.png');
-    }
-
-    30% {
-        background-image: url('/images/boom4.png');
-    }
-
-    40% {
         background-image: url('/images/boom5.png');
     }
 
-    50% {
+    16% {
         background-image: url('/images/boom6.png');
     }
 
-    60% {
+    33% {
         background-image: url('/images/boom7.png');
     }
 
-    70% {
+    49% {
         background-image: url('/images/boom8.png');
     }
 
-    80% {
+    65% {
         background-image: url('/images/boom9.png');
     }
 
-    90% {
+    81% {
         background-image: url('/images/boom10.png');
     }
 
@@ -356,44 +340,36 @@ header h1 {
         background-image: url('/images/boom10.png');
     }
 
-    10% {
+    12.5% {
         background-image: url('/images/boom10.png');
     }
 
-    20% {
+    25% {
         background-image: url('/images/boom9.png');
     }
 
-    30% {
+    37.5% {
         background-image: url('/images/boom8.png');
     }
 
-    40% {
+    50% {
         background-image: url('/images/boom7.png');
     }
 
-    50% {
+    62.5% {
         background-image: url('/images/boom6.png');
     }
 
-    60% {
+    75% {
         background-image: url('/images/boom5.png');
     }
 
-    70% {
+    87.5% {
         background-image: url('/images/boom4.png');
     }
 
-    80% {
-        background-image: url('/images/boom3.png');
-    }
-
-    90% {
-        background-image: url('/images/boom2.png');
-    }
-
     100% {
-        background-image: url('/images/boom1.png');
+        background-image: url('/images/boom3.png');
     }
 }
 
@@ -494,6 +470,10 @@ header h1 {
     color: var(--background-color) !important;
     padding: 0.5em;
     text-decoration: none;
+}
+
+#laadsessie h1 {
+    font-size: 1.8em;
 }
 
 #boomPlanten {
