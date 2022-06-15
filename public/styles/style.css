@@ -510,11 +510,18 @@ header h1 {
 
 #laadsessie h1 {
     font-size: 1.8em;
+    margin-bottom: 0;
 }
 
 #boomPlanten {
     color: var(--secondary-color);
     margin-bottom: 1em;
+    border-radius: var(--border-radius);
+    background: var(--secondary-color);
+    color: var(--background-color) !important;
+    padding: 0.5em;
+    width: fit-content;
+    text-decoration: none;
 }
 
 #walk {
@@ -522,6 +529,7 @@ header h1 {
     color: var(--background-color);
     border-radius: var(--border-radius);
     padding: 0.5em;
+    margin-bottom: 0;
 }
 
 #points {

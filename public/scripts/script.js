@@ -35,9 +35,8 @@ if (window.location.pathname === '/map') {
     })
 
     const generateMapMarkers = (geojson, average) => {
+        console.log(average)
         geojson.features.forEach((singleMarker) => {
-            // console.log(average)
-            console.log(singleMarker)
             const HTMLMarker = document.createElement('div')
             if (singleMarker.properties.sustainability <= average && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-green';
@@ -146,7 +145,6 @@ if (window.location.pathname === '/map') {
     }; // create the geojson object for the points on the map
 
     socket.on('show-charge-points', data => {
-        console.log(data)
         data.forEach(data => {
             let dataForMap = {
                 type: data.markerType,

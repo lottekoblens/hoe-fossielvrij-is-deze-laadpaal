@@ -71,7 +71,7 @@ const groupBy = (items, prop) => {
     }, {});
 }
 
-async function getData() {
+const getData = async () => {
     const query = `from(bucket: "providers")
     |> range(start: -28h, stop: -27h)
     |> filter(fn: (r) => r["_measurement"] == "past_providers")`;
@@ -134,11 +134,11 @@ async function getChargingStations(coordinations) {
     const energySuppliers = await getData();
     Object.entries(energySuppliers)
         .map(supplier => {
-            test = {
+            supplier = {
                 'name': supplier[0],
                 'sustain': supplier[1]._value,
             };
-            SUSTAINDATA.push(test)
+            SUSTAINDATA.push(supplier)
         });
 
     await fetch(url)
