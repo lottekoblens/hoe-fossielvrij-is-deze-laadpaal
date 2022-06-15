@@ -244,6 +244,83 @@ async function getChargingStations(coordinations) {
                         data.sustain = SUSTAINDATA.sustain
                     }
                 })
+            } else if (operatorName == 'PZEM') {
+                data['provider'] = 'NLE'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Abel&co') {
+                data['provider'] = 'Delta'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Abel&co') {
+                data['provider'] = 'Delta'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Joulz\t') {
+                data['provider'] = 'Fenor'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Allego - Overijssel and Gelderland') {
+                data['provider'] = 'Vattenfall'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Just Plugin') {
+                data['provider'] = 'EnergyZero'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'ConnectNed') {
+                data['provider'] = 'MainEnergie'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'AVIA Netherlands') {
+                data['provider'] = 'NLE'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Delta-timeScore') {
+                data['provider'] = 'HVC_Energie'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'EVnetNL') {
+                data['provider'] = 'DGB'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Awesems') {
+                data['provider'] = 'Essent'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
             } else {
                 if (operatorName !== SUSTAINDATA.name) {
                     data['provider'] = 'Unknown'
