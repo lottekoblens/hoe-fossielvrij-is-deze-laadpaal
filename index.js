@@ -46,7 +46,7 @@ app.get('/nietduurzaam', (req, res) => {
 });
 
 app.get('/redelijkduurzaam', (req, res) => {
-    res.render('laadsessie-slecht');
+    res.render('laadsessie-gemiddeld');
 });
 
 app.use((req, res) => {
