@@ -240,7 +240,23 @@ if (window.location.pathname === '/laadsessie') {
 }
 
 if (window.location.pathname === '/nietduurzaam') {
-    // console.log('ye')
     dataChargingPoints = JSON.parse(sessionStorage.getItem("dataChargingPoints"));
     console.log(dataChargingPoints)
+    const showBetterStation = document.getElementById('showBetterStation');
+    const hiddenImg = document.getElementById('hiddenImg');
+    const hiddenText = document.getElementById('hiddenText')
+    showBetterStation.addEventListener('click', () => {
+        hiddenImg.classList.remove('hidden');
+        hiddenText.classList.remove('hidden');
+    })
+}
+
+if (window.location.pathname === '/redelijkduurzaam') {
+    const showBetterStation = document.getElementById('showBetterStation');
+    const hiddenImg = document.getElementById('hiddenImg');
+    const hiddenText = document.getElementById('hiddenText')
+    showBetterStation.addEventListener('click', () => {
+        hiddenImg.classList.remove('hidden');
+        hiddenText.classList.remove('hidden');
+    })
 }
