@@ -1,6 +1,7 @@
 :root {
     --background-color: #080D55;
     --secondary-color: #02958A;
+    --blue-color: #3ED1FC;
     --border-radius: 0.2em;
 }
 
@@ -334,10 +335,9 @@ header h1 {
 }
 
 #showBetterStation {
-    color: var(--secondary-color);
+    color: white;
     border-radius: var(--border-radius);
     background: var(--secondary-color);
-    color: var(--background-color) !important;
     padding: 0.5em;
     width: fit-content;
     font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
@@ -483,7 +483,7 @@ strong#orange {
     margin-bottom: 1em;
     border-radius: var(--border-radius);
     background: var(--secondary-color);
-    color: var(--background-color) !important;
+    color: white !important;
     padding: 0.5em;
     width: fit-content;
     text-decoration: none;
@@ -502,7 +502,7 @@ strong#orange {
 }
 
 #points {
-    background: var(--secondary-color);
+    background: var(--blue-color);
     color: var(--background-color);
     border-radius: var(--border-radius);
     padding: 0.5em;
