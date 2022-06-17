@@ -226,6 +226,10 @@ header h1 {
     z-index: 10;
 }
 
+#info ul li {
+    font-size: 1.2em;
+}
+
 #info h2 {
     margin: 0.2em;
 }
@@ -247,6 +251,7 @@ header h1 {
 
 #info ul {
     padding-left: 0.2em;
+    margin-top: 2em;
 }
 
 #info ul li {
@@ -255,7 +260,8 @@ header h1 {
 }
 
 #icons {
-    max-width: 1.3em;
+    max-width: 1.5em;
+    margin-right: 0.5em;
 }
 
 /* loading icon */

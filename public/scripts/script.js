@@ -9,13 +9,13 @@ const popupError = document.getElementById('popupError');
 let dataMap
 let average
 
-// if ('serviceWorker' in navigator) {
-//     window.addEventListener('load', function () {
-//         navigator.serviceWorker.register('../sw.js').then(function (registration) {
-//             return registration.update();
-//         });
-//     });
-// } // add service worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('../sw.js').then(function (registration) {
+            return registration.update();
+        });
+    });
+} // add service worker
 
 if (window.location.pathname === '/map') {
     window.addEventListener('load', function () {
