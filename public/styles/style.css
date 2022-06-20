@@ -171,6 +171,7 @@ header h1 {
 }
 
 .mapboxgl-popup-content div {
+    margin-top: 0.5em;
     display: flex;
     flex-direction: row;
     justify-content: center;
