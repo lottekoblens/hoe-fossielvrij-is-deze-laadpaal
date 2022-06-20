@@ -252,10 +252,11 @@ if (window.location.pathname === '/laadsessie') {
 
 if (window.location.pathname === '/nietduurzaam' || window.location.pathname === '/redelijkduurzaam') {
     const showBetterStation = document.getElementById('showBetterStation');
-    const hiddenSection = document.getElementById('hiddenSection');
-    const hiddenText = document.getElementById('hiddenText')
+    const hiddenSection = document.getElementById('map2');
+    const walk = document.getElementById('walk')
     showBetterStation.addEventListener('click', () => {
         hiddenSection.classList.remove('hidden');
+        walk.style.marginTop = '20em';
     })
 
     window.addEventListener('load', function () {
@@ -386,9 +387,10 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
         marker: {
             color: 'blue'
         }
+
     }); // with the geocoder the user can search for another place on the map
 
-    map.addControl(geocoder); // Add the geocoder to the map
+    map.addControl(geocoder, 'top-right'); // Add the geocoder to the map
 
     geocoder.on('result', (e) => {
         const longitude = e.result.center[0];
