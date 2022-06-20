@@ -407,79 +407,81 @@ strong#orange {
     color: orange;
 }
 
-#animation {
-    background-size: 100% 100%;
-    animation: growingTree 20s infinite;
-    width: 20em;
-    height: 20em;
-    margin-bottom: 5em;
-}
-
-@keyframes growingTree {
-    0% {
-        background-image: url('/images/boom5.png');
+@supports (animation-name: growingTree) {
+    #animation {
+        background-size: 100% 100%;
+        animation: growingTree 20s infinite;
+        width: 20em;
+        height: 20em;
+        margin-bottom: 5em;
     }
 
-    16% {
-        background-image: url('/images/boom6.png');
+    @keyframes growingTree {
+        0% {
+            background-image: url('/images/boom5.png');
+        }
+
+        16% {
+            background-image: url('/images/boom6.png');
+        }
+
+        33% {
+            background-image: url('/images/boom7.png');
+        }
+
+        49% {
+            background-image: url('/images/boom8.png');
+        }
+
+        65% {
+            background-image: url('/images/boom9.png');
+        }
+
+        81% {
+            background-image: url('/images/boom10.png');
+        }
+
+        100% {
+            background-image: url('/images/boom10.png');
+        }
     }
 
-    33% {
-        background-image: url('/images/boom7.png');
+    #animation-bad {
+        background-size: 100% 100%;
+        animation: dyingTree 10s infinite;
+        width: 20em;
+        height: 20em;
+        margin-bottom: 5em;
     }
 
-    49% {
-        background-image: url('/images/boom8.png');
-    }
+    @keyframes dyingTree {
+        0% {
+            background-image: url('/images/boom10.png');
+        }
 
-    65% {
-        background-image: url('/images/boom9.png');
-    }
+        16% {
+            background-image: url('/images/boom10.png');
+        }
 
-    81% {
-        background-image: url('/images/boom10.png');
-    }
+        33% {
+            background-image: url('/images/boom-slecht1.png');
+        }
 
-    100% {
-        background-image: url('/images/boom10.png');
-    }
-}
+        49% {
+            background-image: url('/images/boom-slecht2.png');
+        }
 
-#animation-bad {
-    background-size: 100% 100%;
-    animation: dyingTree 10s infinite;
-    width: 20em;
-    height: 20em;
-    margin-bottom: 5em;
-}
+        65% {
+            background-image: url('/images/boom-slecht3.png');
+        }
 
-@keyframes dyingTree {
-    0% {
-        background-image: url('/images/boom10.png');
-    }
+        81% {
+            background-image: url('/images/boom-slecht4.png');
+        }
 
-    16% {
-        background-image: url('/images/boom10.png');
-    }
-
-    33% {
-        background-image: url('/images/boom-slecht1.png');
-    }
-
-    49% {
-        background-image: url('/images/boom-slecht2.png');
-    }
-
-    65% {
-        background-image: url('/images/boom-slecht3.png');
-    }
-
-    81% {
-        background-image: url('/images/boom-slecht4.png');
-    }
-
-    100% {
-        background-image: url('/images/boom5.png');
+        100% {
+            background-image: url('/images/boom5.png');
+        }
     }
 }
 
