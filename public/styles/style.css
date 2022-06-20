@@ -259,7 +259,7 @@ header h1 {
 #info {
     display: none;
     width: 80vw;
-    height: 70vh;
+    height: 55vh;
     background: var(--background-color);
     margin: 6.5em auto 1.5em auto;
     padding: 0.5em;
