@@ -165,6 +165,11 @@ header h1 {
     font-size: 1em;
 }
 
+.mapboxgl-popup-content h3:focus {
+    outline: none;
+    border: none;
+}
+
 .mapboxgl-popup-content div {
     display: flex;
     flex-direction: row;
