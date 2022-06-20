@@ -85,6 +85,16 @@ header h1 {
     width: 100%;
 }
 
+#map2 {
+    /* z-index: 1; */
+    position: absolute;
+    top: 20vh;
+    /* bottom: 0; */
+    /* right: 0; */
+    width: 90%;
+    height: 40vh;
+}
+
 .marker {
     background-image: url('/images/mapbox-icon.png');
     background-size: cover;
@@ -496,7 +506,7 @@ strong#orange {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #walk {
