@@ -109,7 +109,7 @@ async function getChargingStations(coordinations) {
     const latitude = coordinations.latitude;
     const longitude = coordinations.longitude;
 
-    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.02}/${longitude + 0.02}/${latitude - 0.015}/${latitude + 0.015}/15`;
+    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.008}/${longitude + 0.008}/${latitude - 0.010}/${latitude + 0.010}/15`;
     let dataStations = null;
 
     const energySuppliers = await getData();

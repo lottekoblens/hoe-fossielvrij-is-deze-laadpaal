@@ -86,13 +86,11 @@ header h1 {
 }
 
 #map2 {
-    /* z-index: 1; */
     position: absolute;
     top: 20vh;
-    /* bottom: 0; */
-    /* right: 0; */
     width: 85%;
-    height: 35vh;
+    height: 45vh;
+    margin-top: 3em;
 }
 
 .marker {
@@ -209,6 +207,10 @@ header h1 {
 
 .mapboxgl-ctrl-logo,
 .mapboxgl-ctrl-attrib-inner {
+    display: none !important;
+}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib.mapboxgl-compact {
     display: none !important;
 }
 
@@ -375,10 +377,15 @@ header h1 {
     justify-content: center;
 }
 
-#laadsessie div {
+#laadsessie>div:first-of-type {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.suggestions {
+    top: 100% !important;
+    bottom: auto !important;
 }
 
 #showBetterStation {
@@ -538,6 +545,10 @@ strong#orange {
 
 .hidden {
     display: none !important;
+}
+
+#hiddenSection {
+    margin-bottom: 20em;
 }
 
 #walk {
