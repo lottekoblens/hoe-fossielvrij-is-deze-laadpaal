@@ -1,45 +1,15 @@
 <%- include('layout/head'); %>
-<!-- <%- include('../index.js') %> -->
-
 
 <main id="laadsessie">
     <h1 tabindex="0">Dit is een <strong id="red">niet duurzame</strong> laadpaal</h1>
     <h2 tabindex="0">Is er geen duurzamere laadpaal in de buurt?</h2>
     <div>
-        <p>Die is er!</p>
+        <p tabindex="0">Die is er!</p>
         <button id="showBetterStation">Kijk hier waar je hem kunt vinden!</button>
     </div>
 
     <div id="hiddenSection" class="hidden">
         <div id="map2"></div>
-        <div id="popupError">
-            <button id="close-popup-button">X</button>
-            <p>Je hebt geen toegang gegeven tot je locatie. Doe dit alsnog of gebruik de zoekfunctie om laadpalen te
-                vinden.</p>
-        </div>
-        <button id="info-button">i</button>
-        <section id="info">
-            <h2>Legenda</h2>
-            <button id="close-button">X</button>
-            <ul>
-                <li>
-                    <img id="icons" src="/images/green-charge.png">
-                    Duurzame laadpalen
-                </li>
-                <li>
-                    <img id="icons" src="/images/orange-charge.png">
-                    Redelijk duurzame laadpalen
-                </li>
-                <li>
-                    <img id="icons" src="/images/red-charge.png">
-                    Niet duurzame laadpalen
-                </li>
-                <li>
-                    <img id="icons" src="/images/grey-charge.png">
-                    Niet beschikbare laadpalen
-                </li>
-            </ul>
-        </section>
     </div>
     <!-- <img id="hiddenImg" class="hidden" src="/images/map.png" alt="Betere laadpalen">
     <p id="hiddenText" class="hidden">
@@ -47,14 +17,16 @@
         lopen is echt niet zo erg.
     </p> -->
 
-    <p id="walk">
+    <p tabindex="0" id="walk">
         Deze laadsessie staat gelijk aan het produceren van <strong>1476 plastic tasjes </strong>
     </p>
-    <p> Je ontvangt dan ook geen punten voor deze laadsessie om een boom te planten. Maar we raden je wel aan om er
+    <p tabindex="0">
+        Je ontvangt dan ook geen punten voor deze laadsessie om een boom te planten. Maar we raden je wel
+        aan om er
         eentje te gaan planten om je laadsessie te compenseren!</p>
     <a id="boomPlanten"
-        href="https://get.treedom.net/nl/?gclid=Cj0KCQjwwJuVBhCAARIsAOPwGATfK0DbPDKMtv4CuZf6aa6rgm-rDG6xEsunVgvW1F4wCBEPZcjVqXIaAqPXEALw_wcB">Plant
-        direct een boom! &gt;
+        href="https://get.treedom.net/nl/?gclid=Cj0KCQjwwJuVBhCAARIsAOPwGATfK0DbPDKMtv4CuZf6aa6rgm-rDG6xEsunVgvW1F4wCBEPZcjVqXIaAqPXEALw_wcB">
+        Plant direct een boom! &gt;
     </a>
     <div id="animation-bad"></div>
     <a href="/map">&lt; Andere duurzamere laadpaal zoeken</a>

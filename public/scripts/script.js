@@ -48,12 +48,15 @@ if (window.location.pathname === '/map') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/green-charge.png"><h3 tabindex="0">Duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/duurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/green-point.png"><h3 tabindex="0">Duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/duurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
 
-            } else if (singleMarker.properties.sustainability > average && singleMarker.properties.sustainability <= average + 2 && singleMarker.properties.availibility == 'Available') {
+            } else if (singleMarker.properties.sustainability > average && singleMarker.properties.sustainability <= average + 3 && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-orange';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
                         scale: 0.5,
@@ -63,11 +66,14 @@ if (window.location.pathname === '/map') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/orange-charge.png"><h3 tabindex="0">Redelijk duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/redelijkduurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/orange-point.png"><h3 tabindex="0">Redelijk duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/redelijkduurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
-            } else if (singleMarker.properties.sustainability > average + 2 && singleMarker.properties.availibility == 'Available') {
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
+            } else if (singleMarker.properties.sustainability > average + 3 && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-red';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
                         scale: 0.5,
@@ -77,10 +83,13 @@ if (window.location.pathname === '/map') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/red-charge.png"><h3 tabindex="0">Niet duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/red-point.png"><h3 tabindex="0">Niet duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
             } else if (singleMarker.properties.availibility != 'Available') {
                 HTMLMarker.className = 'custom-marker-grey';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
@@ -91,10 +100,13 @@ if (window.location.pathname === '/map') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/point.png"><h3>${singleMarker.properties.title}</h3></div><p><strong>Beschikbaarheid:</strong> Niet beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/grey-charge.png"><h3 tabindex="0">Niet beschikbare laadpaal</h3></div><p><strong>Beschikbaarheid:</strong> Niet beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
             } // based on the sustainabilty the icons will load with the right color
         })
     }
@@ -165,8 +177,6 @@ if (window.location.pathname === '/map') {
             }
             geojson.features.push(dataForMap) // for every data object the above will be add to the geojson object
         })
-        let dataChargingPoints = geojson.features
-        sessionStorage.setItem("dataChargingPoints", JSON.stringify(dataChargingPoints));
 
         const calculateAverage = (data) => {
             average = 0;
@@ -206,7 +216,8 @@ if (window.location.pathname === '/map') {
 
         map.flyTo({
             center: [longitude, latitude],
-            speed: 1
+            speed: 2,
+            curve: 0.7,
         });
 
         socket.emit('location', {
@@ -240,8 +251,6 @@ if (window.location.pathname === '/laadsessie') {
 }
 
 if (window.location.pathname === '/nietduurzaam') {
-    dataChargingPoints = JSON.parse(sessionStorage.getItem("dataChargingPoints"));
-    console.log(dataChargingPoints)
     const showBetterStation = document.getElementById('showBetterStation');
     const hiddenSection = document.getElementById('hiddenSection');
     const hiddenText = document.getElementById('hiddenText')
@@ -265,18 +274,6 @@ if (window.location.pathname === '/nietduurzaam') {
         document.getElementsByClassName("mapboxgl-ctrl-geolocate")[0].click();
     }) //make location of user visible on page load
 
-    infoButton.addEventListener('click', () => {
-        infoSection.style.display = 'block';
-    })
-
-    closeButton.addEventListener('click', () => {
-        infoSection.style.display = 'none';
-    })
-
-    closePopupButton.addEventListener('click', () => {
-        popupError.style.display = 'none';
-    })
-
     const generateMapMarkers = (geojson, average) => {
         console.log(average)
         geojson.features.forEach((singleMarker) => {
@@ -291,10 +288,13 @@ if (window.location.pathname === '/nietduurzaam') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/point.png"><h3>${singleMarker.properties.title}</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/duurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/green-point.png"><h3 tabindex="0">Duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/duurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
 
             } else if (singleMarker.properties.sustainability > average && singleMarker.properties.sustainability <= average + 2 && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-orange';
@@ -306,10 +306,13 @@ if (window.location.pathname === '/nietduurzaam') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/point.png"><h3>${singleMarker.properties.title}</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/redelijkduurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/orange-point.png"><h3 tabindex="0">Redelijke duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/redelijkduurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
             } else if (singleMarker.properties.sustainability > average + 2 && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-red';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
@@ -320,10 +323,13 @@ if (window.location.pathname === '/nietduurzaam') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/point.png"><h3>${singleMarker.properties.title}</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/red-point.png"><h3 tabindex="0">Niet duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
             } else if (singleMarker.properties.availibility != 'Available') {
                 HTMLMarker.className = 'custom-marker-grey';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
@@ -334,10 +340,13 @@ if (window.location.pathname === '/nietduurzaam') {
                             offset: 25
                         }) // add popups
                         .setHTML(
-                            `<div><img id="popup-img" src="/images/point.png"><h3>${singleMarker.properties.title}</h3></div><p><strong>Beschikbaarheid:</strong> Niet beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
+                            `<div><img id="popup-img" src="/images/grey-charge.png"><h3 tabindex="0">Niet beschikbare laadpaal</h3></div><p><strong>Beschikbaarheid:</strong> Niet beschikbaar</p><a id="startLoading" href="/nietduurzaam">Meer informatie</a>`
                         ) // give popups the title, description and a button
                     )
                     .addTo(map); // add markers and popups to map
+                HTMLMarker.addEventListener('focus', (event) => {
+                    marker.togglePopup()
+                });
             } // based on the sustainabilty the icons will load with the right color
         })
     }
@@ -408,8 +417,6 @@ if (window.location.pathname === '/nietduurzaam') {
             }
             geojson.features.push(dataForMap) // for every data object the above will be add to the geojson object
         })
-        let dataChargingPoints = geojson.features
-        sessionStorage.setItem("dataChargingPoints", JSON.stringify(dataChargingPoints));
 
         const calculateAverage = (data) => {
             average = 0;
