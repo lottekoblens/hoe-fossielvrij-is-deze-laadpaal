@@ -271,6 +271,7 @@ if (window.location.pathname === '/redelijkduurzaam') {
     const animation = document.getElementById('animation-tree-bad')
     showBetterStation.addEventListener('click', () => {
         hiddenSection.classList.remove('hidden');
+        hiddenSection.style.marginTop = '4em';
         walk.style.marginTop = '22em';
         animation.style.position = 'absolute';
         animation.style.top = '55em';
