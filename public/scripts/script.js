@@ -254,9 +254,13 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
     const showBetterStation = document.getElementById('showBetterStation');
     const hiddenSection = document.getElementById('map2');
     const walk = document.getElementById('walk')
+    const animation = document.getElementById('animation-tree-bad')
     showBetterStation.addEventListener('click', () => {
         hiddenSection.classList.remove('hidden');
         walk.style.marginTop = '22em';
+        animation.style.position = 'absolute';
+        animation.style.top = '44vh';
+        animation.style.left = '0.5em';
     })
 
     window.addEventListener('load', function () {
