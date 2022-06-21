@@ -410,14 +410,14 @@ strong#orange {
 @supports (animation-name: growingTree) {
     #animation {
         background-size: 100% 100%;
-        animation: growingTree 20s infinite;
+        animation: growingTree 20s 1;
         width: 20em;
         height: 20em;
         margin-bottom: 5em;
     }
 
     @keyframes growingTree {
-        0% {
+        from {
             background-image: url('/images/boom5.png');
         }
 
@@ -441,21 +441,21 @@ strong#orange {
             background-image: url('/images/boom10.png');
         }
 
-        100% {
+        to {
             background-image: url('/images/boom10.png');
         }
     }
 
     #animation-bad {
         background-size: 100% 100%;
-        animation: dyingTree 10s infinite;
+        animation: dyingTree 10s 1;
         width: 20em;
         height: 20em;
         margin-bottom: 5em;
     }
 
     @keyframes dyingTree {
-        0% {
+        from {
             background-image: url('/images/boom10.png');
         }
 
@@ -479,126 +479,207 @@ strong#orange {
             background-image: url('/images/boom-slecht4.png');
         }
 
-        100% {
+        to {
             background-image: url('/images/boom5.png');
         }
     }
-}
 
-#stopLoading {
-    background: var(--secondary-color);
-    color: white;
-    margin: 1em auto;
-    padding: 1em;
-    border-radius: 1em;
-    border: none;
-    font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
-    font-size: 1em;
-}
+    #test {
+        padding-bottom: 2em;
+    }
 
-#startLoading {
-    background: var(--secondary-color);
-    color: white;
-    margin: 1em auto;
-    padding: 0.5em;
-    border-radius: 1em;
-    text-decoration: none;
-}
+    #test li {
+        list-style-type: none;
+        opacity: 0;
+        animation: tree 16s linear 0s infinite;
+        position: absolute;
+        top: 45vh;
+        left: 2em;
 
-#startLoading:focus {
-    border: 0.2em solid white;
-    outline: none;
-}
+    }
 
-#laadsessie a:last-of-type {
-    position: fixed;
-    bottom: 1em;
-    border-radius: var(--border-radius);
-    background: white;
-    color: var(--background-color) !important;
-    padding: 0.5em;
-    text-decoration: none;
-}
+    #test li img {
+        max-width: 80vw;
+    }
 
-#laadsessie h1 {
-    font-size: 1.3em;
-    margin-bottom: 0;
-}
+    #test li:nth-child(1) {
+        animation-delay: 0s;
+        -webkit-animation-delay: 0s;
+        -moz-animation-delay: 0s;
+        -o-animation-delay: 0s;
+    }
 
-#laadsessie h2 {
-    font-size: 1.1em;
-    margin-bottom: 0;
-}
+    #test li:nth-child(2) {
+        animation-delay: 4s;
+        -webkit-animation-delay: 4s;
+        -moz-animation-delay: 4s;
+        -o-animation-delay: 4s;
+    }
 
-#boomPlanten {
-    color: var(--secondary-color);
-    margin-bottom: 1em;
-    border-radius: var(--border-radius);
-    background: var(--secondary-color);
-    color: white !important;
-    padding: 0.5em;
-    width: fit-content;
-    text-decoration: none;
-}
+    #test li:nth-child(3) {
+        animation-delay: 8s;
+        -webkit-animation-delay: 8s;
+        -moz-animation-delay: 8s;
+        -o-animation-delay: 8s;
+    }
 
-.hidden {
-    display: none !important;
-}
+    #test li:nth-child(4) {
+        animation-delay: 12s;
+        -webkit-animation-delay: 12s;
+        -moz-animation-delay: 12s;
+        -o-animation-delay: 12s;
+    }
 
-#hiddenSection {
-    margin-bottom: 20em;
-}
+    #test li:nth-child(5) {
+        animation-delay: 16s;
+        -webkit-animation-delay: 16s;
+        -moz-animation-delay: 16s;
+        -o-animation-delay: 16s;
+    }
 
-#walk {
-    background: white;
-    color: var(--background-color);
-    border-radius: var(--border-radius);
-    padding: 0.5em;
-    /* margin-bottom: 0; */
-}
+    #test li:nth-child(6) {
+        animation-delay: 20s;
+        -webkit-animation-delay: 20s;
+        -moz-animation-delay: 20s;
+        -o-animation-delay: 20s;
+    }
 
-#points {
-    background: var(--blue-color);
-    color: var(--background-color);
-    border-radius: var(--border-radius);
-    padding: 0.5em;
-    width: fit-content;
-}
+    @keyframes tree {
+        0% {
+            opacity: 0;
+        }
 
-/* welcome page */
-#welcome {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 1em;
-}
+        6% {
+            opacity: 1;
+        }
 
-#welcome img {
-    width: 5em;
-    height: 4em;
-}
+        24% {
+            opacity: 1;
+        }
 
-#welcome-section {
-    padding: 0 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+        30% {
+            opacity: 0;
+        }
 
-#welcome-section a {
-    background: var(--secondary-color);
-    color: white;
-    margin: 1em auto;
-    padding: 1em;
-    border-radius: 1em;
-    text-decoration: none;
-}
+        100% {
+            opacity: 0;
+        }
+    }
 
-#welcome-section ul {
-    padding-left: 0;
-}
+    #stopLoading {
+        background: var(--secondary-color);
+        color: white;
+        margin: 1em auto;
+        padding: 1em;
+        border-radius: 1em;
+        border: none;
+        font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
+        font-size: 1em;
+    }
 
-#welcome-section ul li {
-    list-style: none;
-    padding-bottom: 0.5em;
-}
+    #startLoading {
+        background: var(--secondary-color);
+        color: white;
+        margin: 1em auto;
+        padding: 0.5em;
+        border-radius: 1em;
+        text-decoration: none;
+    }
+
+    #startLoading:focus {
+        border: 0.2em solid white;
+        outline: none;
+    }
+
+    #laadsessie a:last-of-type {
+        position: fixed;
+        bottom: 1em;
+        border-radius: var(--border-radius);
+        background: white;
+        color: var(--background-color) !important;
+        padding: 0.5em;
+        text-decoration: none;
+    }
+
+    #laadsessie h1 {
+        font-size: 1.3em;
+        margin-bottom: 0;
+    }
+
+    #laadsessie h2 {
+        font-size: 1.1em;
+        margin-bottom: 0;
+    }
+
+    #boomPlanten {
+        color: var(--secondary-color);
+        margin-bottom: 1em;
+        border-radius: var(--border-radius);
+        background: var(--secondary-color);
+        color: white !important;
+        padding: 0.5em;
+        width: fit-content;
+        text-decoration: none;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    #hiddenSection {
+        margin-bottom: 20em;
+    }
+
+    #walk {
+        background: white;
+        color: var(--background-color);
+        border-radius: var(--border-radius);
+        padding: 0.5em;
+        /* margin-bottom: 0; */
+    }
+
+    #points {
+        background: var(--blue-color);
+        color: var(--background-color);
+        border-radius: var(--border-radius);
+        padding: 0.5em;
+        width: fit-content;
+    }
+
+    /* welcome page */
+    #welcome {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 1em;
+    }
+
+    #welcome img {
+        width: 5em;
+        height: 4em;
+    }
+
+    #welcome-section {
+        padding: 0 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #welcome-section a {
+        background: var(--secondary-color);
+        color: white;
+        margin: 1em auto;
+        padding: 1em;
+        border-radius: 1em;
+        text-decoration: none;
+    }
+
+    #welcome-section ul {
+        padding-left: 0;
+    }
+
+    #welcome-section ul li {
+        list-style: none;
+        padding-bottom: 0.5em;
+    }

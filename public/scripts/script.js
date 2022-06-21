@@ -256,7 +256,7 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
     const walk = document.getElementById('walk')
     showBetterStation.addEventListener('click', () => {
         hiddenSection.classList.remove('hidden');
-        walk.style.marginTop = '20em';
+        walk.style.marginTop = '22em';
     })
 
     window.addEventListener('load', function () {
