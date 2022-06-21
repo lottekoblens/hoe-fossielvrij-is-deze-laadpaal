@@ -279,21 +279,32 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
         }
         let minValue = getMinValue(geojson);
 
-        const iets = geojson.features.find((geojson) => {
+        const minimumValue = geojson.features.find((geojson) => {
             if (geojson.properties.sustainability == minValue) {
                 let minStation = geojson
                 return minStation
             }
         })
 
-        const marker1 = new mapboxgl.Marker()
-            .setLngLat([iets.geometry.coordinates[0], iets.geometry.coordinates[1]])
+        const HTMLMarker = document.createElement('div')
+        HTMLMarker.className = 'custom-marker-green'
+        const marker1 = new mapboxgl.Marker(HTMLMarker, {
+                scale: 0.5,
+            })
+            .setLngLat([minimumValue.geometry.coordinates[0], minimumValue.geometry.coordinates[1]]).setPopup(
+                new mapboxgl.Popup({
+                    offset: 25
+                }) // add popups
+                .setHTML(
+                    `<div><img id="popup-img" src="/images/green-point.png"><h3 tabindex="0">Duurzame laadpaal</h3></div><p><strong>Beschikbaarheid: </strong>Beschikbaar</p>`
+                ) // give popups the title, description and a button
+            )
             .addTo(map);
         map.flyTo({
             zoom: 15,
-            center: [iets.geometry.coordinates[0], iets.geometry.coordinates[1]]
+            center: [minimumValue.geometry.coordinates[0], minimumValue.geometry.coordinates[1]]
         })
-        console.log(iets)
+        console.log(minimumValue)
     }
 
     mapboxgl.accessToken =

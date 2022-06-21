@@ -103,6 +103,15 @@ header h1 {
     cursor: pointer;
 }
 
+.custom-marker-loading {
+    cursor: pointer;
+    background-image: url('/images/point.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 3.2rem;
+    width: 2.3rem;
+}
+
 .custom-marker-red {
     cursor: pointer;
     background-image: url('/images/red-point.png');
