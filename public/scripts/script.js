@@ -259,7 +259,7 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
         hiddenSection.classList.remove('hidden');
         walk.style.marginTop = '22em';
         animation.style.position = 'absolute';
-        animation.style.top = '44vh';
+        animation.style.top = '20em';
         animation.style.left = '0.5em';
     })
 

@@ -94,7 +94,7 @@ header h1 {
     position: absolute;
     top: 20vh;
     width: 85%;
-    height: 35vh;
+    height: 25em;
     /* margin-top: 3em; */
     margin-bottom: 20em;
 }
@@ -437,7 +437,7 @@ strong#orange {
         opacity: 0;
         animation: tree 24s infinite;
         position: absolute;
-        top: 60vh;
+        top: 35em;
         left: 2em;
         z-index: -1;
     }
