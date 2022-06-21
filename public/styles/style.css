@@ -427,7 +427,7 @@ strong#orange {
         opacity: 0;
         animation: tree 24s infinite;
         position: absolute;
-        top: 55vh;
+        top: 60vh;
         left: 2em;
         z-index: -1;
     }
