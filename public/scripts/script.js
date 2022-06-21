@@ -250,7 +250,7 @@ if (window.location.pathname === '/laadsessie') {
     })
 }
 
-if (window.location.pathname === '/nietduurzaam' || window.location.pathname === '/redelijkduurzaam') {
+if (window.location.pathname === '/nietduurzaam') {
     const showBetterStation = document.getElementById('showBetterStation');
     const hiddenSection = document.getElementById('map2');
     const walk = document.getElementById('walk')
@@ -259,10 +259,26 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
         hiddenSection.classList.remove('hidden');
         walk.style.marginTop = '22em';
         animation.style.position = 'absolute';
-        animation.style.top = '20em';
+        animation.style.top = '45em';
         animation.style.left = '0.5em';
     })
+}
 
+if (window.location.pathname === '/redelijkduurzaam') {
+    const showBetterStation = document.getElementById('showBetterStation');
+    const hiddenSection = document.getElementById('map2');
+    const walk = document.getElementById('walk')
+    const animation = document.getElementById('animation-tree-bad')
+    showBetterStation.addEventListener('click', () => {
+        hiddenSection.classList.remove('hidden');
+        walk.style.marginTop = '22em';
+        animation.style.position = 'absolute';
+        animation.style.top = '55em';
+        animation.style.left = '0.5em';
+    })
+}
+
+if (window.location.pathname === '/nietduurzaam' || window.location.pathname === '/redelijkduurzaam') {
     window.addEventListener('load', function () {
         document.getElementsByClassName("mapboxgl-ctrl-geolocate")[0].click();
     }) //make location of user visible on page load
