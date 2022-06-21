@@ -484,60 +484,74 @@ strong#orange {
         }
     }
 
-    #test {
-        padding-bottom: 2em;
-    }
-
-    #test li {
+    #animation-tree li {
         list-style-type: none;
         opacity: 0;
-        animation: tree 16s linear 0s infinite;
+        animation: tree 24s infinite;
         position: absolute;
         top: 45vh;
         left: 2em;
-
+        z-index: -1;
     }
 
-    #test li img {
+    #animation-tree-bad li {
+        list-style-type: none;
+        opacity: 0;
+        animation: tree 24s infinite;
+        position: absolute;
+        top: 65vh;
+        left: 2em;
+        z-index: -1;
+    }
+
+    #animation-tree li img,
+    #animation-tree-bad li img {
         max-width: 80vw;
+        margin-bottom: 5em;
     }
 
-    #test li:nth-child(1) {
+    #animation-tree li:nth-child(1),
+    #animation-tree-bad li:nth-child(1) {
         animation-delay: 0s;
         -webkit-animation-delay: 0s;
         -moz-animation-delay: 0s;
         -o-animation-delay: 0s;
     }
 
-    #test li:nth-child(2) {
+    #animation-tree li:nth-child(2),
+    #animation-tree-bad li:nth-child(2) {
         animation-delay: 4s;
         -webkit-animation-delay: 4s;
         -moz-animation-delay: 4s;
         -o-animation-delay: 4s;
     }
 
-    #test li:nth-child(3) {
+    #animation-tree li:nth-child(3),
+    #animation-tree-bad li:nth-child(3) {
         animation-delay: 8s;
         -webkit-animation-delay: 8s;
         -moz-animation-delay: 8s;
         -o-animation-delay: 8s;
     }
 
-    #test li:nth-child(4) {
+    #animation-tree li:nth-child(4),
+    #animation-tree-bad li:nth-child(4) {
         animation-delay: 12s;
         -webkit-animation-delay: 12s;
         -moz-animation-delay: 12s;
         -o-animation-delay: 12s;
     }
 
-    #test li:nth-child(5) {
+    #animation-tree li:nth-child(5),
+    #animation-tree-bad li:nth-child(5) {
         animation-delay: 16s;
         -webkit-animation-delay: 16s;
         -moz-animation-delay: 16s;
         -o-animation-delay: 16s;
     }
 
-    #test li:nth-child(6) {
+    #animation-tree li:nth-child(6),
+    #animation-tree-bad li:nth-child(6) {
         animation-delay: 20s;
         -webkit-animation-delay: 20s;
         -moz-animation-delay: 20s;
@@ -553,7 +567,7 @@ strong#orange {
             opacity: 1;
         }
 
-        24% {
+        15% {
             opacity: 1;
         }
 
@@ -565,121 +579,122 @@ strong#orange {
             opacity: 0;
         }
     }
+}
 
-    #stopLoading {
-        background: var(--secondary-color);
-        color: white;
-        margin: 1em auto;
-        padding: 1em;
-        border-radius: 1em;
-        border: none;
-        font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
-        font-size: 1em;
-    }
+#stopLoading {
+    background: var(--secondary-color);
+    color: white;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    font-family: 'Roboto-Light', Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
 
-    #startLoading {
-        background: var(--secondary-color);
-        color: white;
-        margin: 1em auto;
-        padding: 0.5em;
-        border-radius: 1em;
-        text-decoration: none;
-    }
+#startLoading {
+    background: var(--secondary-color);
+    color: white;
+    margin: 1em auto;
+    padding: 0.5em;
+    border-radius: 1em;
+    text-decoration: none;
+}
 
-    #startLoading:focus {
-        border: 0.2em solid white;
-        outline: none;
-    }
+#startLoading:focus {
+    border: 0.2em solid white;
+    outline: none;
+}
 
-    #laadsessie a:last-of-type {
-        position: fixed;
-        bottom: 1em;
-        border-radius: var(--border-radius);
-        background: white;
-        color: var(--background-color) !important;
-        padding: 0.5em;
-        text-decoration: none;
-    }
+#laadsessie a:last-of-type {
+    position: fixed;
+    bottom: 1em;
+    border-radius: var(--border-radius);
+    background: white;
+    color: var(--background-color) !important;
+    padding: 0.5em;
+    text-decoration: none;
+}
 
-    #laadsessie h1 {
-        font-size: 1.3em;
-        margin-bottom: 0;
-    }
+#laadsessie h1 {
+    font-size: 1.3em;
+    margin-bottom: 0;
+}
 
-    #laadsessie h2 {
-        font-size: 1.1em;
-        margin-bottom: 0;
-    }
+#laadsessie h2 {
+    font-size: 1.1em;
+    margin-bottom: 0;
+}
 
-    #boomPlanten {
-        color: var(--secondary-color);
-        margin-bottom: 1em;
-        border-radius: var(--border-radius);
-        background: var(--secondary-color);
-        color: white !important;
-        padding: 0.5em;
-        width: fit-content;
-        text-decoration: none;
-    }
+#boomPlanten {
+    color: var(--secondary-color);
+    margin-bottom: 1em;
+    border-radius: var(--border-radius);
+    background: var(--secondary-color);
+    color: white !important;
+    padding: 0.5em;
+    width: fit-content;
+    text-decoration: none;
+}
 
-    .hidden {
-        display: none !important;
-    }
+.hidden {
+    display: none !important;
+}
 
-    #hiddenSection {
-        margin-bottom: 20em;
-    }
+#hiddenSection {
+    margin-bottom: 20em;
+}
 
-    #walk {
-        background: white;
-        color: var(--background-color);
-        border-radius: var(--border-radius);
-        padding: 0.5em;
-        /* margin-bottom: 0; */
-    }
+#walk {
+    background: white;
+    color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 0.5em;
+    /* margin-bottom: 0; */
+}
 
-    #points {
-        background: var(--blue-color);
-        color: var(--background-color);
-        border-radius: var(--border-radius);
-        padding: 0.5em;
-        width: fit-content;
-    }
+#points {
+    background: var(--blue-color);
+    color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 0.5em;
+    width: fit-content;
+}
 
-    /* welcome page */
-    #welcome {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-top: 1em;
-    }
+/* welcome page */
+#welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1em;
+}
 
-    #welcome img {
-        width: 5em;
-        height: 4em;
-    }
+#welcome img {
+    width: 5em;
+    height: 4em;
+}
 
-    #welcome-section {
-        padding: 0 2em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+#welcome-section {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    #welcome-section a {
-        background: var(--secondary-color);
-        color: white;
-        margin: 1em auto;
-        padding: 1em;
-        border-radius: 1em;
-        text-decoration: none;
-    }
+#welcome-section a {
+    background: var(--secondary-color);
+    color: white;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1em;
+    text-decoration: none;
+}
 
-    #welcome-section ul {
-        padding-left: 0;
-    }
+#welcome-section ul {
+    padding-left: 0;
+}
 
-    #welcome-section ul li {
-        list-style: none;
-        padding-bottom: 0.5em;
-    }
+#welcome-section ul li {
+    list-style: none;
+    padding-bottom: 0.5em;
+}
