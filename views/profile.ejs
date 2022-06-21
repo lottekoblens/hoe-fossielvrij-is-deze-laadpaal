@@ -1,25 +1,31 @@
 <%- include('layout/head'); %>
 
-<main id="laadsessie">
-    <h1 tabindex="0">Hi Lotte!</h1>
-    <h2 tabindex="0">Je bent goed bezig!</h2>
-    <p tabindex="0">Je hebt al veel punten gespaard, namelijk:</p>
-    <div tabindex="0" id="points">700 punten</div>
-    <p tabindex="0">Nog 300 punten erbij en je kunt een boom planten!</p>
-    <a id="boomPlanten"
-        href="https://get.treedom.net/nl/?gclid=Cj0KCQjwwJuVBhCAARIsAOPwGATfK0DbPDKMtv4CuZf6aa6rgm-rDG6xEsunVgvW1F4wCBEPZcjVqXIaAqPXEALw_wcB">Plant
-        direct een boom! &gt;
-    </a>
-    <!-- <div id="animation"></div> -->
-    <ul id="animation-tree">
-        <li><img src="/images/boom5.png" alt=""></li>
-        <li><img src="/images/boom6.png" alt=""></li>
-        <li><img src="/images/boom7.png" alt=""></li>
-        <li><img src="/images/boom8.png" alt=""></li>
-        <li><img src="/images/boom9.png" alt=""></li>
-        <li><img src="/images/boom10.png" alt=""></li>
-    </ul>
-    <a href="/map">&lt; Terug naar de kaart</a>
+<main id="profile-page">
+    <section id="profile-top">
+        <img id="profile" src="/images/profiel.jpg" alt="">
+        <h1 tabindex="0">David de Boer</h1>
+    </section>
+    <section id="profile-content">
+        <h2 tabindex="0">Je bent goed bezig!</h2>
+        <p tabindex="0" id="points">Gespaarde punten: 700</p>
+        <p tabindex="0">Nog 300 punten erbij en je kunt een boom planten!</p>
+        <h3 tabindex="0">Afgelopen laadsessies:</h3>
+        <ul>
+            <li tabindex="0" id="green">
+                <p>Lyceumstraat, Alkmaar</p>
+                <p><strong>100 punten verdiend</strong></p>
+            </li>
+            <li tabindex="0" id="green">
+                <p>Nieuwlandersingel, Alkmaar</p>
+                <p><strong>100 punten verdiend</strong></p>
+            </li>
+            <li tabindex="0" id="orange">
+                <p>Dr. Schaepmankade, Alkmaar</p>
+                <p><strong>50 punten verdiend</strong></p>
+            </li>
+        </ul>
+        <a href="/map">&lt; Terug naar de kaart</a>
+    </section>
 </main>
 
 <%- include('layout/footer'); %>

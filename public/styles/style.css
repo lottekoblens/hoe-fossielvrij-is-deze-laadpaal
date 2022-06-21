@@ -2,7 +2,12 @@
     --background-color: #080D55;
     --secondary-color: #02958A;
     --blue-color: #3ED1FC;
+    --focus-color: #e370d6;
     --border-radius: 0.2em;
+}
+
+*:focus {
+    outline: 0.2em solid var(--focus-color);
 }
 
 @font-face {
@@ -89,8 +94,8 @@ header h1 {
     position: absolute;
     top: 20vh;
     width: 85%;
-    height: 45vh;
-    margin-top: 3em;
+    height: 35vh;
+    /* margin-top: 3em; */
     margin-bottom: 20em;
 }
 
@@ -417,82 +422,6 @@ strong#orange {
 }
 
 @supports (animation-name: growingTree) {
-    #animation {
-        background-size: 100% 100%;
-        animation: growingTree 20s 1;
-        width: 20em;
-        height: 20em;
-        margin-bottom: 5em;
-    }
-
-    @keyframes growingTree {
-        from {
-            background-image: url('/images/boom5.png');
-        }
-
-        16% {
-            background-image: url('/images/boom6.png');
-        }
-
-        33% {
-            background-image: url('/images/boom7.png');
-        }
-
-        49% {
-            background-image: url('/images/boom8.png');
-        }
-
-        65% {
-            background-image: url('/images/boom9.png');
-        }
-
-        81% {
-            background-image: url('/images/boom10.png');
-        }
-
-        to {
-            background-image: url('/images/boom10.png');
-        }
-    }
-
-    #animation-bad {
-        background-size: 100% 100%;
-        animation: dyingTree 10s 1;
-        width: 20em;
-        height: 20em;
-        margin-bottom: 5em;
-    }
-
-    @keyframes dyingTree {
-        from {
-            background-image: url('/images/boom10.png');
-        }
-
-        16% {
-            background-image: url('/images/boom10.png');
-        }
-
-        33% {
-            background-image: url('/images/boom-slecht1.png');
-        }
-
-        49% {
-            background-image: url('/images/boom-slecht2.png');
-        }
-
-        65% {
-            background-image: url('/images/boom-slecht3.png');
-        }
-
-        81% {
-            background-image: url('/images/boom-slecht4.png');
-        }
-
-        to {
-            background-image: url('/images/boom5.png');
-        }
-    }
-
     #animation-tree li {
         list-style-type: none;
         opacity: 0;
@@ -508,7 +437,7 @@ strong#orange {
         opacity: 0;
         animation: tree 24s infinite;
         position: absolute;
-        top: 65vh;
+        top: 60vh;
         left: 2em;
         z-index: -1;
     }
@@ -706,4 +635,81 @@ strong#orange {
 #welcome-section ul li {
     list-style: none;
     padding-bottom: 0.5em;
+}
+
+#profile-page {
+    /* padding: 0 2em; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#profile-page section a:last-of-type {
+    position: fixed;
+    bottom: 1em;
+    border-radius: var(--border-radius);
+    background: white;
+    color: var(--background-color) !important;
+    padding: 0.5em;
+    text-decoration: none;
+    left: 1em;
+}
+
+#profile-top {
+    background: var(--secondary-color);
+    height: 17vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#profile-top h1 {
+    font-size: 1.3em;
+    margin-left: 6em;
+}
+
+#profile-top img {
+    position: absolute;
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    top: 8vh;
+    left: 10vw;
+    border: 0.1em solid white;
+}
+
+#profile-content {
+    margin-top: 4em;
+    padding: 1em;
+}
+
+#profile-content h3 {
+    margin-top: 2em;
+}
+
+#profile-content #green {
+    background-color: #72bb71;
+    list-style-type: none;
+    padding: 1em;
+    margin-bottom: 1em;
+    color: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+#profile-content ul {
+    padding: 0;
+}
+
+#profile-content ul li p {
+    margin: 0.2em 0;
+}
+
+#profile-content #orange {
+    background-color: #f7b072;
+    list-style-type: none;
+    padding: 1em;
+    margin-bottom: 1em;
+    color: var(--background-color);
+    border-radius: var(--border-radius);
 }
