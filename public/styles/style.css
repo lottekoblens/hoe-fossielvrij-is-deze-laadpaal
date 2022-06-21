@@ -437,7 +437,6 @@ strong#orange {
         opacity: 0;
         animation: tree 24s infinite;
         position: absolute;
-        /* top: 35em; */
         left: 2em;
         z-index: -1;
     }
@@ -544,7 +543,7 @@ strong#orange {
     outline: none;
 }
 
-#laadsessie a:last-of-type {
+#laadsessie #back-button {
     position: fixed;
     bottom: 1em;
     border-radius: var(--border-radius);
@@ -588,7 +587,6 @@ strong#orange {
     color: var(--background-color);
     border-radius: var(--border-radius);
     padding: 0.5em;
-    /* margin-bottom: 0; */
 }
 
 #points {
@@ -638,7 +636,6 @@ strong#orange {
 }
 
 #profile-page {
-    /* padding: 0 2em; */
     display: flex;
     flex-direction: column;
     justify-content: center;

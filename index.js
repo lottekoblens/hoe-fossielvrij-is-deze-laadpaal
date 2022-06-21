@@ -19,7 +19,6 @@ const client = new InfluxDB({
     token: INFLUXDB_KEY
 });
 const queryApi = client.getQueryApi(INFLUXDB_ORG);
-const math = require('mathjs')
 
 app.set('view engine', 'ejs');
 

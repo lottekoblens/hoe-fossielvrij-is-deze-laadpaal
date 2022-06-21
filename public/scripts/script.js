@@ -414,15 +414,14 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
         mapboxgl: mapboxgl, // Set the mapbox-gl instance
         marker: true, // Do not use the default marker style
         flyTo: {
-            zoom: 15, // If you want your result not to go further than a specific zoom
+            zoom: 14, // If you want your result not to go further than a specific zoom
         },
         marker: {
             color: 'blue'
         }
-
     }); // with the geocoder the user can search for another place on the map
 
-    map.addControl(geocoder, 'top-right'); // Add the geocoder to the map
+    map.addControl(geocoder); // Add the geocoder to the map
 
     geocoder.on('result', (e) => {
         const longitude = e.result.center[0];
@@ -430,7 +429,8 @@ if (window.location.pathname === '/nietduurzaam' || window.location.pathname ===
 
         map.flyTo({
             center: [longitude, latitude],
-            speed: 1
+            speed: 2,
+            curve: 0.7,
         });
 
         socket.emit('location', {
