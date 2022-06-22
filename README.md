@@ -98,7 +98,11 @@ And here you see the solution I created:
 
 <img src="/public/images/project.gif" width="350" alt="gif of application">
 
-I made an application which shows the user a map of the Netherlands. To create the map I used mapbox. The map is created with the following code:
+To introduce the user to the application I created a zero state. 
+
+<img src="/public/images/zerostate.png" width="300">
+
+Then on the next page I create map of the Netherlands. To create the map I used mapbox. The map is created with the following code:
 
 ```js
 const getUserLocation = () => {
@@ -552,6 +556,8 @@ async function getChargingStations(coordinations) {
     io.to(users.id).emit('show-charge-points', dataStations)
 }
 ```
+
+To connect the provider of the charging station to the provider of the API of the CO2 emission, I created a variable SUSTAINDATA which consists of the name of the provider and the value of the co2 emissions. Then I connect the provider of the charging station to the other providers and add the sustain value to the data objects.
 
 Then on the last line I send the data back to the client, so that I can render the charging stations on the map. To make sure that all the users, also people who are colorblind, will understand which charging stations are sustainable or unsustainable I used color and icons to display the sustainability. 
 
