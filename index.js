@@ -32,7 +32,6 @@ app.get('/profiel', (req, res) => {
     res.render('profile');
 });
 
-
 app.get('/', (req, res) => {
     res.render('welkom');
 });

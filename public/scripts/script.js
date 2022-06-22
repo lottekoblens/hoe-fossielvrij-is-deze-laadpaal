@@ -18,6 +18,14 @@ if ('serviceWorker' in navigator) {
 } // add service worker
 
 if (window.location.pathname === '/map') {
+    const getUserLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
+        } else {
+            errorMessage.innerHTML = 'The browser does not support geolocation';
+        }
+    }
+
     window.addEventListener('load', function () {
         document.getElementsByClassName("mapboxgl-ctrl-geolocate")[0].click();
     }) //make location of user visible on page load
@@ -119,14 +127,6 @@ if (window.location.pathname === '/map') {
         zoom: 17, // starting zoom
         center: [4.899431, 52.379189]
     });
-
-    const getUserLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
-        } else {
-            errorMessage.innerHTML = 'The browser does not support geolocation';
-        }
-    }
 
     const userPosition = location => {
         loading.style.display = 'block'
