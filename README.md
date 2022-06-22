@@ -90,7 +90,7 @@ This time series data (and the user's loading sessions) is kept in an InfluxDB d
 
 I chose this user story: 
 
-Find the best charging station
+**Find the best charging station**
 
 As an electric driver, I would like to know at which charging station I can charge most sustainably, so that I can charge my car as sustainably as possible.
 
@@ -98,7 +98,7 @@ And here you see the solution I created:
 
 <img src="/public/images/project.gif" width="350" alt="gif of application">
 
-I made an application which shows the user a map of the Netherlands. To create the map I used mapbox:
+I made an application which shows the user a map of the Netherlands. To create the map I used mapbox. The map is created with the following code:
 
 ```js
 const getUserLocation = () => {
@@ -112,18 +112,6 @@ const getUserLocation = () => {
 window.addEventListener('load', function () {
     document.getElementsByClassName("mapboxgl-ctrl-geolocate")[0].click();
 }) //make location of user visible on page load
-
-infoButton.addEventListener('click', () => {
-    infoSection.style.display = 'block';
-})
-
-closeButton.addEventListener('click', () => {
-    infoSection.style.display = 'none';
-})
-
-closePopupButton.addEventListener('click', () => {
-    popupError.style.display = 'none';
-})
 
 const generateMapMarkers = (geojson, average) => {
     geojson.features.forEach((singleMarker) => {
@@ -338,6 +326,236 @@ const calculateAverage = (data) => {
 }
 average = calculateAverage(data) // we need to calculate the average to make a scale for the loading points
 ```
+
+As you can see in the first code block I also use sockets.io. With sockets.io I can send the users location from the client to the server. With the user location I fetch the data of the loading stations server side, like this:
+
+```js
+io.on('connection', (socket) => {
+    users[socket.id] = Math.floor(Math.random() * 10000000);
+    socket.join(users[socket.id]);
+    users.id = users[socket.id]
+
+    socket.on('location', async (coordinations) => {
+        getChargingStations(coordinations);
+    })
+
+    socket.on('disconnect', () => {
+        delete users[socket.id];
+    });
+});
+
+async function getChargingStations(coordinations) {
+    const latitude = coordinations.latitude;
+    const longitude = coordinations.longitude;
+
+    const url = `https://ui-map.shellrecharge.com/api/map/v2/markers/${longitude - 0.008}/${longitude + 0.008}/${latitude - 0.010}/${latitude + 0.010}/15`;
+    let dataStations = null;
+
+    const energySuppliers = await getData();
+    Object.entries(energySuppliers)
+        .map(supplier => {
+            supplier = {
+                'name': supplier[0],
+                'sustain': supplier[1]._value,
+            };
+            SUSTAINDATA.push(supplier)
+        });
+
+    await fetch(url)
+        .then(res => res.json())
+        .then(data => dataStations = data)
+        .then(data => data.map(data => {
+            let operatorName = data.operatorName;
+            if (operatorName == 'PitPoint') {
+                data['provider'] = 'TotalGasPower';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Allego') {
+                data['provider'] = 'Vattenfall';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Allego - Groningen and Drenthe') {
+                data['provider'] = 'Vattenfall';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Community by Shell Recharge') {
+                data['provider'] = 'EnergieDirect';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Blue Current') {
+                data['provider'] = 'EnergieDirect';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'EV-Box') {
+                data['provider'] = 'Engie';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Alfen') {
+                data['provider'] = 'Vandebron';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'E-Flux') {
+                data['provider'] = 'BudgetEnergie';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'LastMileSolutions') {
+                data['provider'] = 'Engie';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Fastned') {
+                data['provider'] = 'GreenChoice';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'BlueMarble Charging') {
+                data['provider'] = 'Sepa';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Shell Regarge') {
+                data['provider'] = 'EnergieDirect';
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Eneco') {
+                data['provider'] = 'Eneco'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Vattenfall') {
+                data['provider'] = 'Vattenfall'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'PZEM') {
+                data['provider'] = 'NLE'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Abel&co') {
+                data['provider'] = 'Delta'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Abel&co') {
+                data['provider'] = 'Delta'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Joulz\t') {
+                data['provider'] = 'Fenor'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Allego - Overijssel and Gelderland') {
+                data['provider'] = 'Vattenfall'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Just Plugin') {
+                data['provider'] = 'EnergyZero'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'ConnectNed') {
+                data['provider'] = 'MainEnergie'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'AVIA Netherlands') {
+                data['provider'] = 'NLE'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Delta-timeScore') {
+                data['provider'] = 'HVC_Energie'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'EVnetNL') {
+                data['provider'] = 'DGB'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else if (operatorName == 'Awesems') {
+                data['provider'] = 'Essent'
+                SUSTAINDATA.find((SUSTAINDATA) => {
+                    if (SUSTAINDATA.name == data.provider) {
+                        data.sustain = SUSTAINDATA.sustain
+                    }
+                })
+            } else {
+                if (operatorName !== SUSTAINDATA.name) {
+                    data['provider'] = 'Unknown'
+                }
+            }
+            return data;
+        }))
+        .catch(err => console.log(err))
+    io.to(users.id).emit('show-charge-points', dataStations)
+}
+```
+
+Then on the last line I send the data back to the client, so that I can render the charging stations on the map. To make sure that all the users, also people who are colorblind, will understand which charging stations are sustainable or unsustainable I used color and icons to display the sustainability. 
+
+<img src="/public/images/icons.png" width="300">
 
 ## 🔍 Getting started
 Before you can start you need to follow the installation
