@@ -43,7 +43,7 @@ if (window.location.pathname === '/map') {
     })
 
     const generateMapMarkers = (geojson, average) => {
-        console.log(average)
+        // console.log(average)
         geojson.features.forEach((singleMarker) => {
             const HTMLMarker = document.createElement('div')
             if (singleMarker.properties.sustainability <= average && singleMarker.properties.availibility == 'Available') {
