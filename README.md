@@ -103,17 +103,17 @@ co2 emissions. I do that like this:
 
 ```js
 const calculateAverage = (data) => {
-            average = 0;
-            let sum = 0;
-            for (let i = 0; i < data.length; i++) {
-                if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
-                    //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
-                    sum += data[i].sustain;
-                }
-            }
-            return sum / data.length
+    average = 0;
+    let sum = 0;
+    for (let i = 0; i < data.length; i++) {
+        if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
+            //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
+            sum += data[i].sustain;
         }
-        average = calculateAverage(data) // we need to calculate the average to make a scale for the loading points
+    }
+    return sum / data.length
+}
+average = calculateAverage(data) // we need to calculate the average to make a scale for the loading points
 ```
 
 ## 🔍 Getting started
