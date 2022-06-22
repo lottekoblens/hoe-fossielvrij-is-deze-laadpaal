@@ -33,11 +33,11 @@ The Green Caravan has developed a data model that combines energy generation and
 So the problem I solved with my application is that the user doesn't know how fossil-free a charging station is.
 
 ### :construction_worker: Client
-De Voorhoede
+**De Voorhoede**
 
 De Voorhoede is a digital agency that builds websites and apps. They make web apps, websites, prototypes and so on. Furthermore, they research, advise, build, test and do much more! They have made the website of Pathé at home and for many more customers.
 
-Green Caravan
+**Green Caravan**
 
 At Green Caravan it is the mission to make all electric vehicles CO2 neutral and to charge them fossil-free. They want to achieve this by offering smart-charging services and fossil-free charging solutions.
 
@@ -47,15 +47,19 @@ Design and develop a web application that provides insight into the use of fossi
 #### User stories
 
 1. Fossil electricity from a charging station?
+
 As an electric driver, I want to know how much fossil electricity comes from the charging station I am standing next to, so that I know how (un)sustainable that is.
 
 2. Find the best charging station
+
 As an electric driver, I would like to know at which charging station I can charge most sustainably, so that I can charge my car as sustainably as possible.
 
 3. Find the best charging moment at a charging station
+
 As an electric driver, I would like to know when the least fossil electricity comes from my charging station, so that I can charge my car as sustainably as possible.
 
 4. How do you make CO2 data from the charging network and individual charging sessions available in an attractive way?
+
 What stories can you tell about the collective data over time, about numbers of charging sessions, about average charging time, about differences in CO2 emissions. What is possible here, what are the considerations that matter for an electric driver and user of CO2 Smart Charging.
 
 ### Objective
