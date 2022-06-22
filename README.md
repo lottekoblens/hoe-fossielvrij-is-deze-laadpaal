@@ -2,8 +2,7 @@
 
 In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je de oplossing en schrijf je een uitleg van de code. De Design Rationale is een verantwoording van je ontwerp. 
 
-<!-- [![Watch the video](/public/images/thumbnail.png) width="350"](https://youtu.be/KsQJYSobGd8) -->
-[<img src="/public/images/thumbnail.png" width="350">](https://youtu.be/KsQJYSobGd8)
+[<img src="/public/images/project.gif" width="350">](https://youtu.be/KsQJYSobGd8)
 
 ## :heavy_plus_sign: Table of contents
 - [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
@@ -97,7 +96,7 @@ As an electric driver, I would like to know at which charging station I can char
 
 And here you see the solution I created:
 
-<!-- video  -->
+<img src="/public/images/project.gif" width="350" alt="gif of application">
 
 I made an application which shows the user a map of the Netherlands. If the user gives permission to sharing their location, then the map will automatically load the charging stations at their location. These charging stations are displayed with different icons. The green icons stand for sustainable charging stations. The orange icons stand for reasonably sustainable charging stations. And the red icons stand for  unsustainable charging stations. To determine whether a charging station is sustainable at that moment or not I calculate the average of the 
 co2 emissions. I do that like this:
