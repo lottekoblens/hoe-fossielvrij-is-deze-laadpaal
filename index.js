@@ -19,8 +19,11 @@ const client = new InfluxDB({
     token: INFLUXDB_KEY
 });
 const queryApi = client.getQueryApi(INFLUXDB_ORG);
+const compression = require('compression');
 
 app.set('view engine', 'ejs');
+
+app.use(compression());
 
 app.use(express.static(__dirname + '/public'));
 
