@@ -2,6 +2,9 @@
 
 In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je de oplossing en schrijf je een uitleg van de code. De Design Rationale is een verantwoording van je ontwerp. 
 
+<video src="/images/project.mov">
+
+[![Video of application](/images/boom10.ong)](https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/blob/main/public/images/project.mov "Link Title")
 <!-- video of application -->
 
 ## :heavy_plus_sign: Table of contents
@@ -98,7 +101,7 @@ And here you see the solution I created:
 
 <!-- video  -->
 
-I made an application which shows the user a map of the Netherlands. If the user gives permission to sharing their location, then the map will automatically load the charging stations at their location. These charging stations are displayed with different icons. The green icons stand for sustainable charging stations. The orange icons stand for reasonably sustainable charging stations. And the red icons stand for  unsustainable charging stations. To determine whether a charging station is sustainable at that moment or not i calculate the average of the 
+I made an application which shows the user a map of the Netherlands. If the user gives permission to sharing their location, then the map will automatically load the charging stations at their location. These charging stations are displayed with different icons. The green icons stand for sustainable charging stations. The orange icons stand for reasonably sustainable charging stations. And the red icons stand for  unsustainable charging stations. To determine whether a charging station is sustainable at that moment or not I calculate the average of the 
 co2 emissions. I do that like this:
 
 ```js
