@@ -8,6 +8,8 @@ export const createMap = () => {
     const loading = document.getElementById('loading-ring');
     const popupError = document.getElementById('popupError');
     let average
+
+    loading.style.display = 'block'
     const getUserLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
@@ -33,7 +35,6 @@ export const createMap = () => {
     })
 
     const generateMapMarkers = (geojson, average) => {
-        // console.log(average)
         geojson.features.forEach((singleMarker) => {
             const HTMLMarker = document.createElement('div')
             if (singleMarker.properties.sustainability <= average && singleMarker.properties.availibility == 'Available') {
@@ -119,7 +120,6 @@ export const createMap = () => {
     });
 
     const userPosition = location => {
-        loading.style.display = 'block'
         const latitude = location.coords.latitude; // set latitude
         const longitude = location.coords.longitude; // set longitude
 
@@ -163,7 +163,7 @@ export const createMap = () => {
                 }
             };
             if (data.provider === 'Unknown') {
-                data.sustain = average
+                data.sustain = average // this is not the best solution, but not all providers are known, so I still give them a sustain number so that they will be shown on the map
             }
             geojson.features.push(dataForMap) // for every data object the above will be add to the geojson object
         })
