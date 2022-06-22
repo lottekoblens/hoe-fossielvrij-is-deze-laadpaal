@@ -2,7 +2,7 @@
     "version": 2,
     "name": "sustainable-charging",
     "builds": [{
-        "src": "app.js",
+        "src": "index.js",
         "use": "@vercel/node"
     }],
     "routes": [{
