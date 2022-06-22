@@ -2,17 +2,7 @@
 
 In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je de oplossing en schrijf je een uitleg van de code. De Design Rationale is een verantwoording van je ontwerp. 
 
-<!-- video of application -->
-<!-- <figure>
-  <iframe src="https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/blob/main/public/images/project.mp4" frameborder="0" allowfullscreen="true"> </iframe>
-</figure> -->
-<!-- <figure>
-  <video controls="true" allowfullscreen="true" poster="/public/images/boom10png">
-    <source src="https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/blob/main/public/images/project.mp4" type="video/mp4">
-  </video>
-</figure> -->
-
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/KsQJYSobGd8)
+[![Watch the video](/images/thumbnail.png)](https://youtu.be/KsQJYSobGd8)
 
 
 ## :heavy_plus_sign: Table of contents
