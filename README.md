@@ -92,6 +92,10 @@ This time series data (and the user's loading sessions) is kept in an InfluxDB d
 
 For a more detailed explanation of the application, I would like to refer you to my [wiki](https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/wiki/Explanation-application). There I also explain the code of the application. Below I give an explanation of the concept.
 
+The application starts with a zero state to introduce the user to the app and to tell them what they can expect. 
+
+<img src="/public/images/zerostate.png" width="300">
+
 ## 🔍 Getting started
 Before you can start you need to follow the installation
 
