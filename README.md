@@ -4,6 +4,12 @@ In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je 
 
 <!-- video of application -->
 
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="/images/boom10png">
+    <source src="/images/project.mp4" type="video/mp4">
+  </video>
+</figure>
+
 ## :heavy_plus_sign: Table of contents
 - [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
   - [:heavy_plus_sign: Table of contents](#heavy_plus_sign-table-of-contents)
