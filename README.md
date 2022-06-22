@@ -2,7 +2,7 @@
 
 In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je de oplossing en schrijf je een uitleg van de code. De Design Rationale is een verantwoording van je ontwerp. 
 
-[![Watch the video](/public/images/thumbnail.png)](https://youtu.be/KsQJYSobGd8)
+[![Watch the video](/public/images/thumbnail.png) width="350"](https://youtu.be/KsQJYSobGd8)
 
 
 ## :heavy_plus_sign: Table of contents
