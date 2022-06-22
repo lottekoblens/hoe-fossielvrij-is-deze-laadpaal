@@ -12,7 +12,7 @@ In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je 
   </video>
 </figure> -->
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/blob/main/public/images/project.mp4)
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/KsQJYSobGd8)
 
 
 ## :heavy_plus_sign: Table of contents
