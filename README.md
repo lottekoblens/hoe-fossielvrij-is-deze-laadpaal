@@ -109,6 +109,16 @@ Sustainable | Pretty sunstainable | Unsustainable
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Map](/public/images/pagina-duurzaam.png) |  ![Popup](/public/images/pagina-redelijkduurzaam.png) |  ![Popup](/public/images/pagina-nietduurzaam.png) 
 
+On the page of the sustainable charging station, I reward the user with choosing this charging station by giving him 100 points, in order to eventually be able to plant a tree. On the other pages I try to motivate the user as much as possible to choose a better charging station. For example, they get fewer or no points. And I try to get them to go to another charging station again by showing a green charging station nearby on a map.
+
+Then there is the last page, the profile page.
+
+<img src="/public/images/pagina-profiel.png" width="300">
+
+Here the user can see how many points he has already saved and how many he still needs to be able to plant a tree. And it also shows the last charging sessions.
+
+That is the application I created to inform the user on which charging station in the most sustainable. And where I motivate the user to pick for the most sustainable one.
+
 ## 🔍 Getting started
 Before you can start you need to follow the installation
 
