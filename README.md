@@ -96,6 +96,13 @@ The application starts with a zero state to introduce the user to the app and to
 
 <img src="/public/images/zerostate.png" width="300">
 
+Then the user gets to see a map, which will go to their location if they give permission for that (if the user does not give permission for the location to be shared, the user can use the search function to also see the charging stations in the desired location). The charging stations are then shown on the map. These charging stations can have different icons. The green icons stand for sustainable charging stations and also have an image of a windmill on them to radiate sustainability. The orange icons stand for reasonably sustainable charging stations. The red icons for non-sustainable charging stations and the gray ones for charging stations that are not available at the moment.
+When the user clicks on one of the icons, a popup appears. From that popup, the user can choose to see more information about that charging station.
+
+Map | Popup 
+:-------------------------:|:-------------------------:
+![Map](/public/images/icons.png) |  ![Popup](/public/images/popup.png) 
+
 ## 🔍 Getting started
 Before you can start you need to follow the installation
 
