@@ -6,7 +6,7 @@ In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je 
 
 <figure>
   <video controls="true" allowfullscreen="true" poster="/public/images/boom10png">
-    <source src="/public/images/project.mp4" type="video/mp4">
+    <source src="https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/blob/main/public/images/project.mp4" type="video/mp4">
   </video>
 </figure>
 
