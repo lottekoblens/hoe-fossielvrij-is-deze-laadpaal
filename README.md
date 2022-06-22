@@ -103,6 +103,12 @@ Map | Popup
 :-------------------------:|:-------------------------:
 ![Map](/public/images/icons.png) |  ![Popup](/public/images/popup.png) 
 
+Then the user gets to one of the pages below. 
+
+Sustainable | Pretty sunstainable | Unsustainable
+:-------------------------:|:-------------------------:|:-------------------------:
+![Map](/public/images/pagina-duurzaam.png) |  ![Popup](/public/images/pagina-redelijkduurzaam.png) |  ![Popup](/public/images/pagina-nietduurzaam.png) 
+
 ## 🔍 Getting started
 Before you can start you need to follow the installation
 
