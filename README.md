@@ -7,23 +7,23 @@ Find the most sustainable charging station in your neighborhood with this applic
 ## :heavy_plus_sign: Table of contents
 - [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
   - [:heavy_plus_sign: Table of contents](#heavy_plus_sign-table-of-contents)
-  - [Debrief](#debrief)
+  - [:page_facing_up: Debrief](#page_facing_up-debrief)
     - [:memo: Problem description / Motive](#memo-problem-description--motive)
     - [:construction_worker: Client](#construction_worker-client)
     - [:rocket: Design challenge](#rocket-design-challenge)
-      - [User stories](#user-stories)
-    - [Objective](#objective)
-    - [Delivery](#delivery)
-    - [Conditions](#conditions)
-    - [Users of the application](#users-of-the-application)
+      - [:busts_in_silhouette: User stories](#busts_in_silhouette-user-stories)
+    - [:building_construction: Objective](#building_construction-objective)
+    - [:white_check_mark: Delivery](#white_check_mark-delivery)
+    - [:pushpin: Conditions](#pushpin-conditions)
+    - [:busts_in_silhouette: Users of the application](#busts_in_silhouette-users-of-the-application)
   - [:package: Data](#package-data)
-  - [Solution](#solution)
-  - [Process](#process)
+  - [:iphone: Solution](#iphone-solution)
+  - [:bricks: Process](#bricks-process)
   - [🔍 Getting started](#-getting-started)
     - [🔨 Installation](#-installation)
   - [:bookmark: Licentie](#bookmark-licentie)
 
-## Debrief
+## :page_facing_up: Debrief
 
 ### :memo: Problem description / Motive
 The Netherlands is rapidly switching to electric driving. But electricity is not yet fossil-free. And when you charge your electric car, you emit CO2. How much CO2 is released depends on
@@ -45,7 +45,7 @@ At Green Caravan it is the mission to make all electric vehicles CO2 neutral and
 ### :rocket: Design challenge
 Design and develop a web application that provides insight into the use of fossil fuels for charging sessions of electric cars
 
-#### User stories
+#### :busts_in_silhouette: User stories
 
 1. Fossil electricity from a charging station?
 
@@ -63,21 +63,21 @@ As an electric driver, I would like to know when the least fossil electricity co
 
 What stories can you tell about the collective data over time, about numbers of charging sessions, about average charging time, about differences in CO2 emissions. What is possible here, what are the considerations that matter for an electric driver and user of CO2 Smart Charging.
 
-### Objective
+### :building_construction: Objective
 The Green Caravan wants to ensure that electric cars can charge their cars as fossil-free. This reduces the amount of CO2, which is released when the car is charged. They want to ensure this by offering a service that allows users to check how fossil-free it is in front of the charging stations.
 
-### Delivery
+### :white_check_mark: Delivery
 The project must be delivered on Thursday 23 June.
 
 * Project is on github
 * Project can be viewed live
 * Project is well documented (wiki & readme)
 
-### Conditions
+### :pushpin: Conditions
 Four meetings with the client are planned to receive feedback. These meetings take place at the office of De Voorhoede.
 Questions can be asked via Slack to both Tom (when it comes to electric charging, the users, etc.) and Victor (technical questions).
 
-### Users of the application
+### :busts_in_silhouette: Users of the application
 Owners of electric cars who want to know how sustainable it is if they charge their car at a charging station.
 
 ## :package: Data
@@ -89,7 +89,7 @@ This time series data (and the user's loading sessions) is kept in an InfluxDB d
 
 * To create a map with the charching stations, I uses the Mapbox Geocoding API.
 
-## Solution
+## :iphone: Solution
 
 For a more detailed explanation of the application, I would like to refer you to my [wiki](https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/wiki/Explanation-application). There I also explain the code of the application. Below I give an explanation of the concept.
 
@@ -121,7 +121,7 @@ Here the user can see how many points he has already saved and how many he still
 
 That is the application I created to inform the user on which charging station in the most sustainable. And where I motivate the user to pick for the most sustainable one.
 
-## Process 
+## :bricks: Process 
 
 If you want to read more about my process during this project, you can read that [here](https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/wiki/Productbiografie)!
 
