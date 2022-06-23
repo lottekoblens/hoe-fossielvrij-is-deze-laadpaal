@@ -1,14 +1,12 @@
 # :seedling: How fossil-free is this charging station?
 
-In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je de oplossing en schrijf je een uitleg van de code. De Design Rationale is een verantwoording van je ontwerp. 
-
 [<img src="/public/images/project.gif" width="350">](https://youtu.be/KsQJYSobGd8)
 
 ## :heavy_plus_sign: Table of contents
 - [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
   - [:heavy_plus_sign: Table of contents](#heavy_plus_sign-table-of-contents)
   - [Debrief](#debrief)
-    - [:memo: Problem description / Cause](#memo-problem-description--cause)
+    - [:memo: Problem description / Motive](#memo-problem-description--motive)
     - [:construction_worker: Client](#construction_worker-client)
     - [:rocket: Design challenge](#rocket-design-challenge)
       - [User stories](#user-stories)
@@ -25,7 +23,7 @@ In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je 
 
 ## Debrief
 
-### :memo: Problem description / Cause
+### :memo: Problem description / Motive
 The Netherlands is rapidly switching to electric driving. But electricity is not yet fossil-free. And when you charge your electric car, you emit CO2. How much CO2 is released depends on
 from where, when and of course how much energy (kWh) you charge. So how do you know how much CO2 is released when you plug your electric car into a specific charging station?
 
