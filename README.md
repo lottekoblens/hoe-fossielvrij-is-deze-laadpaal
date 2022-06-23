@@ -1,5 +1,7 @@
 # :seedling: How fossil-free is this charging station?
 
+Find the most sustainable charging station in your neighborhood with this application.
+
 [<img src="/public/images/project.gif" width="350">](https://youtu.be/KsQJYSobGd8)
 
 ## :heavy_plus_sign: Table of contents
