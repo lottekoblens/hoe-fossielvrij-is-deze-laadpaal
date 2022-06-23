@@ -21,7 +21,7 @@ Find the most sustainable charging station in your neighborhood with this applic
   - [:bricks: Process](#bricks-process)
   - [🔍 Getting started](#-getting-started)
     - [🔨 Installation](#-installation)
-  - [:bookmark: Licentie](#bookmark-licentie)
+  - [:bookmark: License](#bookmark-license)
 
 ## :page_facing_up: Debrief
 
@@ -88,6 +88,7 @@ Green Caravan has several data models:
 This time series data (and the user's loading sessions) is kept in an InfluxDB database. This has its own API and (JS) SDK and will be made available to you during the master thesis. By combining the information from the associated energy provider with the data about the energy mix for each charging station, you can calculate the exact CO2 footprint of a charging session at that charging station at that moment. We challenge you to realize this and to make it transparent for the user.
 
 * To create a map with the charching stations, I uses the Mapbox Geocoding API.
+* Shell Recharge API, for the data of the charging stations
 
 ## :iphone: Solution
 
@@ -147,7 +148,7 @@ Open the terminal, or use the terminal in your IDE
 
    If this doesn't work change your port to another one
 
-## :bookmark: Licentie
+## :bookmark: License
 
 ![GNU GPL V3](https://www.gnu.org/graphics/gplv3-127x51.png)
 
