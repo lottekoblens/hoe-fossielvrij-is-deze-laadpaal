@@ -2,7 +2,7 @@
 
 Find the most sustainable charging station in your neighborhood with this application.
 
-[<img src="/public/images/project.gif" width="350">](https://youtu.be/KsQJYSobGd8)
+<img src="/public/images/project.gif" width="350">
 
 ## :heavy_plus_sign: Table of contents
 - [:seedling: How fossil-free is this charging station?](#seedling-how-fossil-free-is-this-charging-station)
