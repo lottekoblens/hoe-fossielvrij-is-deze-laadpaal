@@ -7,7 +7,7 @@
 }
 
 *:focus {
-    outline: 0.2em solid var(--focus-color);
+    outline: 0.2em solid var(--focus-color, hotpink);
 }
 
 @font-face {
@@ -55,22 +55,35 @@ header h1 {
 
 
 /* map page */
-#popupError {
+#error {
+    position: absolute;
+    top: 10vh;
+    left: 1em;
+    background: white;
+    padding: 1em;
+    color: var(--background-color, #080D55);
+    z-index: 10;
+}
+
+#popupError,
+#popup-error-support {
     display: none;
     width: 80vw;
     height: 10vh;
-    background: var(--background-color);
+    background: var(--background-color, #080D55);
     margin: 6.5em auto 1.5em auto;
     padding: 0.5em;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius, 0.2em);
 }
 
-#popupError p {
+#popupError p,
+#popup-error-support p {
     max-width: 65vw;
     margin-top: 0;
 }
 
-#popupError button {
+#popupError button,
+#popup-error-support button {
     position: absolute;
     top: 28.5vmin;
     right: 10.4vw;
@@ -78,7 +91,7 @@ header h1 {
     color: black;
     border: none;
     padding: 0.5em 1em;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius, 0.2em);
 }
 
 #map {
@@ -516,6 +529,48 @@ strong#orange {
         100% {
             opacity: 0;
         }
+    }
+}
+
+@supports not (animation-name: growingTree) {
+    #animation-tree li {
+        list-style-type: none;
+        opacity: 0;
+        position: absolute;
+        top: 60vh;
+        left: 2em;
+        z-index: -1;
+    }
+
+    #animation-tree li:last-child {
+        list-style-type: none;
+        opacity: 1;
+        position: absolute;
+        top: 60vh;
+        left: 2em;
+        z-index: -1;
+    }
+
+    #animation-tree-bad li {
+        list-style-type: none;
+        opacity: 0;
+        position: absolute;
+        left: 2em;
+        z-index: -1;
+    }
+
+    #animation-tree-bad li:last-child {
+        list-style-type: none;
+        opacity: 1;
+        position: absolute;
+        left: 2em;
+        z-index: -1;
+    }
+
+    #animation-tree li img,
+    #animation-tree-bad li img {
+        max-width: 80vw;
+        margin-bottom: 5em;
     }
 }
 

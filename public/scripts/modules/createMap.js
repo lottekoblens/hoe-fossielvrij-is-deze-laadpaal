@@ -1,12 +1,13 @@
 export const createMap = () => {
     const socket = io();
-    const errorMessage = document.getElementById('error');
+    const popupErrorSupport = document.getElementById('popup-error-support');
     const infoButton = document.getElementById('info-button');
     const infoSection = document.getElementById('info');
     const closeButton = document.getElementById('close-button');
     const closePopupButton = document.getElementById('close-popup-button');
+    const closePopupButtonSupport = document.getElementById('close-popup-button-support');
     const loading = document.getElementById('loading-ring');
-    const popupError = document.getElementById('popupError');
+    const popupError = document.getElementById('popup-error');
     let average
 
     loading.style.display = 'block'
@@ -14,7 +15,7 @@ export const createMap = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(userPosition, ErrorPermissionDenied);
         } else {
-            errorMessage.innerHTML = 'The browser does not support geolocation';
+            popupErrorSupport.style.display = 'block';
         }
     }
 
@@ -32,6 +33,10 @@ export const createMap = () => {
 
     closePopupButton.addEventListener('click', () => {
         popupError.style.display = 'none';
+    })
+
+    closePopupButtonSupport.addEventListener('click', () => {
+        popupErrorSupport.style.display = 'none';
     })
 
     const generateMapMarkers = (geojson, average) => {

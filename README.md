@@ -18,6 +18,7 @@ In de Design Rationale schrijf je de debriefing, de probleem-definitie, toon je 
     - [Users of the application](#users-of-the-application)
   - [:package: Data](#package-data)
   - [Solution](#solution)
+  - [Process](#process)
   - [🔍 Getting started](#-getting-started)
     - [🔨 Installation](#-installation)
   - [:bookmark: Licentie](#bookmark-licentie)
@@ -119,6 +120,10 @@ Then there is the last page, the profile page.
 Here the user can see how many points he has already saved and how many he still needs to be able to plant a tree. And it also shows the last charging sessions.
 
 That is the application I created to inform the user on which charging station in the most sustainable. And where I motivate the user to pick for the most sustainable one.
+
+## Process 
+
+If you want to read more about my process during this project, you can read that [here](https://github.com/lottekoblens/hoe-fossielvrij-is-deze-laadpaal/wiki/Productbiografie)!
 
 ## 🔍 Getting started
 Before you can start you need to follow the installation
