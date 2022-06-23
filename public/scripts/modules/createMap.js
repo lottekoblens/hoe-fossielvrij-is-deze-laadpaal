@@ -42,7 +42,7 @@ export const createMap = () => {
     const generateMapMarkers = (geojson, average) => {
         geojson.features.forEach((singleMarker) => {
             const HTMLMarker = document.createElement('div')
-            if (singleMarker.properties.sustainability <= average - 1 && singleMarker.properties.availibility == 'Available') {
+            if (singleMarker.properties.sustainability <= average && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-green';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
                         scale: 0.5,
@@ -60,7 +60,7 @@ export const createMap = () => {
                     marker.togglePopup()
                 });
 
-            } else if (singleMarker.properties.sustainability > average - 1 && singleMarker.properties.sustainability <= average + 3 && singleMarker.properties.availibility == 'Available') {
+            } else if (singleMarker.properties.sustainability > average && singleMarker.properties.sustainability <= average + 2 && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-orange';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
                         scale: 0.5,
@@ -77,7 +77,7 @@ export const createMap = () => {
                 HTMLMarker.addEventListener('focus', (event) => {
                     marker.togglePopup()
                 });
-            } else if (singleMarker.properties.sustainability > average + 3 && singleMarker.properties.availibility == 'Available') {
+            } else if (singleMarker.properties.sustainability > average + 2 && singleMarker.properties.availibility == 'Available') {
                 HTMLMarker.className = 'custom-marker-red';
                 const marker = new mapboxgl.Marker(HTMLMarker, {
                         scale: 0.5,

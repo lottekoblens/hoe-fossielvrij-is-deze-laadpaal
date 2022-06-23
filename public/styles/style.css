@@ -65,7 +65,7 @@ header h1 {
     z-index: 10;
 }
 
-#popupError,
+#popup-error,
 #popup-error-support {
     display: none;
     width: 80vw;
@@ -76,13 +76,13 @@ header h1 {
     border-radius: var(--border-radius, 0.2em);
 }
 
-#popupError p,
+#popup-error p,
 #popup-error-support p {
     max-width: 65vw;
     margin-top: 0;
 }
 
-#popupError button,
+#popup-error button,
 #popup-error-support button {
     position: absolute;
     top: 28.5vmin;
