@@ -7,7 +7,10 @@ export const createSmallMap = () => {
 
     const generateMapMarkers = (geojson, average) => {
         const getMin = () => {
-            return geojson.features.map(d => d.properties.sustainability);
+            return geojson.features.map(d => {
+                if (d.properties.sustainability === undefined) return 800;
+                return d.properties.sustainability
+            });
         }
 
         const getMinValue = () => {
@@ -60,7 +63,6 @@ export const createSmallMap = () => {
     }
 
     const userPosition = location => {
-        // loading.style.display = 'block'
         const latitude = location.coords.latitude; // set latitude
         const longitude = location.coords.longitude; // set longitude
 
@@ -123,7 +125,6 @@ export const createSmallMap = () => {
         average = calculateAverage(data) // we need to calculate the average to make a scale for the loading points
 
         generateMapMarkers(geojson, average)
-        // loading.style.display = 'none';
     })
 
     const geocoder = new MapboxGeocoder({

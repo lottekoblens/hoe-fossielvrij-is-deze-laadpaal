@@ -1,5 +1,5 @@
-const CACHE_VERSION = 'v3'
-const HTML_CACHE = 'v1_html'
+const CACHE_VERSION = 'v3.1'
+const HTML_CACHE = 'v2_html'
 const CACHE_FILES = [
     '/styles/style.css',
     '/scripts/script.js',
