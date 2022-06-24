@@ -1,6 +1,6 @@
 # :seedling: How fossil-free is this charging station?
 
-Find the most sustainable charging station in your neighborhood with this application.
+Find the most sustainable charging station in your neighborhood with this mobile application.
 
 <img src="/public/images/project.gif" width="350">
 
