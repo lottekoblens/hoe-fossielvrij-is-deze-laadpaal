@@ -175,15 +175,33 @@ export const createMap = () => {
         })
 
         const calculateAverage = (data) => {
+            let totalValues = []
+            let counter = 0
+
             average = 0;
             let sum = 0;
             for (let i = 0; i < data.length; i++) {
+                // console.log(data[i].sustain)
                 if (isFinite(data[i].sustain)) { //The global isFinite() function determines whether the passed value is a finite number. 
                     //If needed, the parameter is first converted to a number. Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite
                     sum += data[i].sustain;
+                    totalValues.push(data[i].sustain);
+                    counter++
                 }
             }
-            return sum / data.length
+            const test = totalValues.reduce((a, b) => a + b, 0)
+            const average2 = test / counter
+
+            console.log(average2)
+            // let counter = 0
+            // const test = data.reduce((a, b) => {
+            //     if (isFinite(a.sustain) || isFinite(b.sustain)) {
+            //         a.sustain + b.sustain, 0
+            //     }
+            // });
+            // console.log(test)
+            // console.log(counter)
+            return average2
         }
         average = calculateAverage(data) // we need to calculate the average to make a scale for the loading points
 
