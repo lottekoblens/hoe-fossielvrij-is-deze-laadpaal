@@ -189,19 +189,10 @@ export const createMap = () => {
                     counter++
                 }
             }
-            const test = totalValues.reduce((a, b) => a + b, 0)
-            const average2 = test / counter
+            const reducedValues = totalValues.reduce((a, b) => a + b, 0)
+            const averageNew = reducedValues / counter
 
-            console.log(average2)
-            // let counter = 0
-            // const test = data.reduce((a, b) => {
-            //     if (isFinite(a.sustain) || isFinite(b.sustain)) {
-            //         a.sustain + b.sustain, 0
-            //     }
-            // });
-            // console.log(test)
-            // console.log(counter)
-            return average2
+            return averageNew
         }
         average = calculateAverage(data) // we need to calculate the average to make a scale for the loading points
 
